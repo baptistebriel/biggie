@@ -35,8 +35,7 @@ You should be able to start `gulp watch` from Terminal.
 
 ### Defining absolute URLs
 
-For some AJAX reasons, we have global variables that defines where your site is.
-
+For some AJAX reasons, we have global variables that defines where your site is.  
 Define the `PATH` url and the subfolder `BASE` into `/assets/js/config.js`
 
 ```javascript
