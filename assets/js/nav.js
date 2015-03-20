@@ -21,7 +21,7 @@ var nav = {
 		this.array = Array.prototype.slice.call(this.query, 0);
 		// use Array.prototype.forEach
 		this.array.forEach(function(link){
-			events.on(link, 'click', handlers.navHandler);
+			events.on(link, 'click', nav.handler);
 		});
 		
 	},
