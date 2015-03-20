@@ -10,11 +10,16 @@ utils object
 ---------- */
 var utils = {
 
-	// we're doing AJAX calls here
-	// so there's a callback (done)
+	/* ----------
+	function to load AJAX templates
+	used on section.init
+	don't forget the callback (done)
+	see https://github.com/bigwheel-framework/documentation/blob/master/gotchas.md#forgetting-to-call-done
+	---------- */
 	loadPage : function(req, view, callback){
 		
 		var route = req.route;
+		// TODO : Add 'default' route case
 		// case 'default'
 		if(route === "/") route = '/home';
 

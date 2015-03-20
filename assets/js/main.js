@@ -7,7 +7,7 @@ require
 ---------- */
 var config = require('./config');
 var framework = require('./framework');
-var handlers = require('./handlers');
+var nav = require('./nav');
 var domready = require('domready');
 
 /* ----------
@@ -20,6 +20,6 @@ other inits on domready
 ---------- */
 domready(function() {
 	
-	handlers.nav();
+	nav.init();
 	
 });

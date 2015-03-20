@@ -1,7 +1,7 @@
 var config = require('../config');
 var framework = require('../framework');
 var utils = require('../utils');
-var handlers = require('../handlers');
+var nav = require('../nav');
 var $ = require('dom-select');
 var Tween = require('gsap');
 var events = require('dom-events');
@@ -33,7 +33,7 @@ home.prototype = {
 			_this.array = Array.prototype.slice.call(_this.query, 0);
 			
 			_this.array.forEach(function(link){
-				events.on(link, 'click', handlers.navHandler);
+				events.on(link, 'click', nav.handler);
 			});
 
 			done();
