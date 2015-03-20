@@ -26,8 +26,8 @@ You should be able to start `gulp watch` from Terminal.
 
 ### PATH and BASE urls
 
-For some AJAX reasons, we have global variables that defines where your site is.  
-Define the `PATH` url (http://localhost:8888/ for example) and the subfolder `BASE` (/biggie/ for example) into `/assets/js/config.js`  
+For some AJAX reasons, we have global variables that defines where your site is.
+Define the `PATH` url (http://localhost:8888/ for example) and the subfolder `BASE` (/biggie/ for example) into `/assets/js/config.js`
 Your site will be at `http://localhost:8888/biggie/` by default.
 
 ## Directory
