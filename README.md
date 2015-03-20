@@ -45,7 +45,8 @@ module.exports = {
 }
 ```
 
-Your site will be at `http://localhost:8888/biggie/` by default.
+Your site will be at `http://localhost:8888/biggie/` by default.  
+This allows you to work on a subfolder or on a different server before pushing it into production in two seconds.
 
 ## Bigwheel Documentation
 
