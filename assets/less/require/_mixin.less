@@ -1,0 +1,44 @@
+/* -----
+Basic Mixin'
+----- */
+.size(@width, @height){
+  width: @width;
+  height: @height;
+} /* .size(50px,30px); */
+.center-block(){
+      display: block;
+   margin-left: auto;
+  margin-right: auto;
+} /* .center-block(); */
+.scale-with-grid(){
+     max-width: 100%;
+        height: auto;
+} /* .scale-with-grid(); */
+.absolute(){
+     position: absolute;
+     top: 0; right: 0; bottom: 0; left:0;
+     margin: auto;
+} /* .absolute(); */
+.fixed(){
+     position: fixed;
+     top: 0; right: 0; bottom: 0; left:0;
+     margin: auto;
+} /* .fixed(); */
+.hidden(){
+  opacity: 0;
+  visibility: hidden;
+} /* .hidden(); */
+.visible(){
+  opacity: 1;
+  visibility: visible;
+} /* .visible(); */
+
+/* -----
+Hover
+----- */
+.hover-color(@color){
+  &:hover{color: @color;}
+}
+.hover-bg(@color){
+  &:hover{background-color: @color;}
+}
