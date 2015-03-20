@@ -33,11 +33,18 @@ You should be able to start `gulp watch` from Terminal.
 - `/gulp/ (and gulpfile.js)` for gulp tasks
 - `/templates/` HTML templates used for AJAX calls
 
-### PATH and BASE URLs
+### Defining absolute URLs
 
 For some AJAX reasons, we have global variables that defines where your site is.
 
-Define the `PATH` url (http://localhost:8888/ for example) and the subfolder `BASE` (/biggie/ for example) into `/assets/js/config.js`
+Define the `PATH` url and the subfolder `BASE` into `/assets/js/config.js`
+
+```javascript
+module.exports = {
+	PATH: 'http://localhost:8888',
+	BASE: '/biggie/'
+}
+```
 
 Your site will be at `http://localhost:8888/biggie/` by default.
 

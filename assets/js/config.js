@@ -7,8 +7,8 @@ var domselect = require('dom-select');
 config object
 global shared variables
 ---------- */
-var config = {
-
+module.exports = {
+	
 	/* ----------
 	vars
 	@path, {string}
@@ -26,5 +26,3 @@ var config = {
 	$view: domselect('#js-view')
 
 }
-
-module.exports = config;
