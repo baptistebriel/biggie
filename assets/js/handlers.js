@@ -1,11 +1,18 @@
+/* ----------
+require
+---------- */
 var framework = require('./framework');
 var utils = require('./utils');
 var $ = require('dom-select');
 var events = require('dom-events');
 var classes = require('dom-classes');
 
+/* ----------
+handlers object
+(events)
+---------- */
 var handlers = {
-
+	
 	nav : function(){
 
 		this.query = $.all('.js-nav'),

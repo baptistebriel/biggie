@@ -1,7 +1,13 @@
+/* ----------
+require
+---------- */
 var framework = require('./framework');
 var config = require('./config');
 var ajax = require('please-ajax')(window);
 
+/* ----------
+utils object
+---------- */
 var utils = {
 
 	// we're doing AJAX calls here

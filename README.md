@@ -24,6 +24,12 @@ You should be able to start `gulp watch` from Terminal.
 - browserify and minify javascript files
 - watch for assets/less/layout.less and assets/js/*.js
 
+### PATH and BASE urls
+
+For some AJAX reasons, we have global variables that defines where your site is locally.  
+Define the PATH URL (http://localhost:8888/ for example) and the subfolder BASE (biggie for example) into /assets/js/config.js   
+Your site will be at http://localhost:8888/biggie/ by default.
+
 ## Directory
 
 - `/assets/` contains all LESS files and JavaScript files
