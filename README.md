@@ -24,12 +24,6 @@ You should be able to start `gulp watch` from Terminal.
 - browserify and minify javascript files
 - watch for assets/less/layout.less and assets/js/*.js
 
-### PATH and BASE urls
-
-For some AJAX reasons, we have global variables that defines where your site is.
-Define the `PATH` url (http://localhost:8888/ for example) and the subfolder `BASE` (/biggie/ for example) into `/assets/js/config.js`
-Your site will be at `http://localhost:8888/biggie/` by default.
-
 ## Directory
 
 - `/assets/` contains all LESS files and JavaScript files
@@ -38,6 +32,14 @@ Your site will be at `http://localhost:8888/biggie/` by default.
 - `/data/` used for storing data JSON files
 - `/gulp/ (and gulpfile.js)` for gulp tasks
 - `/templates/` HTML templates used for AJAX calls
+
+### PATH and BASE URLs
+
+For some AJAX reasons, we have global variables that defines where your site is.
+
+Define the `PATH` url (http://localhost:8888/ for example) and the subfolder `BASE` (/biggie/ for example) into `/assets/js/config.js`
+
+Your site will be at `http://localhost:8888/biggie/` by default.
 
 ## Bigwheel Documentation
 
