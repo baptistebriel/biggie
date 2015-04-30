@@ -26,12 +26,9 @@
     "gulp-util": "^3.0.4",
     "please-ajax": "^1.0.8",
     "promise": "^6.1.0",
-    "tape": "^3.5.0",
-    "swiper": "^3.0.7"
+    "tape": "^3.5.0"
   },
-  "devDependencies": {
-    "gulp-browserify": "^0.5.1"
-  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
