@@ -26,7 +26,8 @@
     "gulp-util": "^3.0.4",
     "please-ajax": "^1.0.8",
     "promise": "^6.1.0",
-    "tape": "^3.5.0"
+    "tape": "^3.5.0",
+    "swiper": "^3.0.7"
   },
   "devDependencies": {
     "gulp-browserify": "^0.5.1"
