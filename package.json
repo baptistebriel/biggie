@@ -28,7 +28,9 @@
     "promise": "^6.1.0",
     "tape": "^3.5.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp-browserify": "^0.5.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
