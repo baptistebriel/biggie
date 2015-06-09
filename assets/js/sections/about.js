@@ -1,5 +1,5 @@
-var config = require('../config');
 var framework = require('../framework');
+var config = require('../config');
 var utils = require('../utils');
 var $ = require('dom-select');
 var Tween = require('gsap');
