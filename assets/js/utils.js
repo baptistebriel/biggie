@@ -35,7 +35,8 @@ var utils = {
 
 		// create page
 		var page = document.createElement('div');
-		page.className = "page page-"+(route.substr(1)).replace('/', '-');
+		var pageClass = route.substr(1).replace('/', '-');
+		page.className = "page page-"+pageClass;
 
 		// add content
 		ajax.get(config.BASE+'templates'+route+'.html', {
