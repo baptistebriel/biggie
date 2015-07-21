@@ -4,6 +4,7 @@ see https://github.com/bigwheel-framework/documentation/blob/master/routes-defin
 ---------- */
 module.exports = {
 	'/': require('./sections/home'),
-	'/home': require('./sections/home'),
-	'/about': require('./sections/about')
+	'/home': { section: require('./sections/home') },
+	'/about': { section: require('./sections/about') },
+	'/section/:id': { section: require('./sections/section'), duplicate: true }
 };

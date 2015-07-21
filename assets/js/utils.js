@@ -19,14 +19,24 @@ var utils = {
 	loadPage : function(req, view, callback){
 		
 		var route = req.route;
-		// TODO : Add 'default' route case
-		// case 'default'
+		var routeDuplicate = req.params.id;
+		
+		// TODO :
+		// - add 'default' route case
 		if(route === "/") route = '/home';
+		// - replace :id in route by the current section's id to get the template
+		// not sure if it's the best way to do it tho...
+		if(routeDuplicate) {
+			route = route.substring(0, route.length - 3); // needs to be ':id' in routes.js
+			route += routeDuplicate;
+		}
+
+		console.log(route);
 
 		// create page
 		var page = document.createElement('div');
 		page.className = "page page-"+route.substr(1);
-
+		
 		// add content
 		ajax.get(config.BASE+'templates'+route+'.html', {
 			success: function (object) {
