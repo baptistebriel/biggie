@@ -45,7 +45,7 @@ module.exports = {
 }
 ```
 
-Your site will be at `http://localhost:8888/biggie/` by default.  
+Your site will be at `http://localhost:8888/biggie/` here. Using a simple [HTTP server](https://www.npmjs.com/package/http-server) or MAMP, etc...
 This allows you to work on a subfolder or a different server before pushing it into prod in two secs.
 
 ## Bigwheel Documentation

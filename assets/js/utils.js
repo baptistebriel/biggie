@@ -20,7 +20,7 @@ var utils = {
 		
 		var route = req.route;
 		var routeDuplicate = req.params.id;
-		
+
 		// TODO :
 		// - add 'default' route case
 		if(route === "/") route = '/home';
@@ -35,8 +35,8 @@ var utils = {
 
 		// create page
 		var page = document.createElement('div');
-		page.className = "page page-"+route.substr(1);
-		
+		page.className = "page page-"+(route.substr(1)).replace('/', '-');
+
 		// add content
 		ajax.get(config.BASE+'templates'+route+'.html', {
 			success: function (object) {
