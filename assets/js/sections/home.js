@@ -22,9 +22,10 @@ home.prototype = {
     	
 		var view = this.view;
 		var page = this.page = utils.loadPage(req, view, done);
+		console.log(page);
+
 		var DOM  = this.DOM = queryDom({ el: page });
-		
-		console.log(this.DOM);
+		console.log(DOM);
 
 	},
 
