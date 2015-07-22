@@ -19,8 +19,9 @@ function home() {
 home.prototype = {
     
 	init: function(req, done) {
-    	
+    		
 		var view = this.view;
+		var slug = this.slug;
 		var page = this.page = utils.loadPage(req, view, done);
 		var DOM  = this.DOM = queryDom({ el: document.getElementById('page-'+slug) });
 		console.log(DOM);
