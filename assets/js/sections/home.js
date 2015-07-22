@@ -22,9 +22,7 @@ home.prototype = {
     	
 		var view = this.view;
 		var page = this.page = utils.loadPage(req, view, done);
-		console.log(page);
-
-		var DOM  = this.DOM = queryDom({ el: page });
+		var DOM  = this.DOM = queryDom({ el: document.getElementById('page-'+slug) });
 		console.log(DOM);
 
 	},

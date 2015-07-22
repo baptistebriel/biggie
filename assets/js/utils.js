@@ -36,6 +36,7 @@ var utils = {
 		// create page
 		var page = document.createElement('div');
 		var pageClass = route.substr(1).replace('/', '-');
+		page.id = "page-"+pageClass;
 		page.className = "page page-"+pageClass;
 
 		// add content
