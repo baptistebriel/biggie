@@ -17,14 +17,15 @@ function home() {
 };
 
 home.prototype = {
-    
+    	
 	init: function(req, done) {
     		
 		var view = this.view;
 		var slug = this.slug;
 		var page = this.page = utils.loadPage(req, view, done);
-				
-		var DOM = queryDom({el: document.getElementById('page-'+slug)});
+		
+		var container = document.querySelector('.page-home');
+		var DOM = queryDom({el: container});
 		console.log(DOM);
 
 	},
