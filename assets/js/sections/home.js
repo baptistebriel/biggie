@@ -26,9 +26,13 @@ home.prototype = {
 		
 		console.log(document.getElementById('page-'+slug));
 		
-		var DOM  = this.DOM = queryDom({ el: document.getElementById('page-'+slug) });
+		//var DOM = queryDom({ el: document.getElementById('page-'+slug) });
+		//console.log(DOM);
+
+		var container = document.getElementById('page-home');
+		var DOM = queryDom({el: container});
 		console.log(DOM);
-		
+
 	},
 
 	resize: function(width, height) {
