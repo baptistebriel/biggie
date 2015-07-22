@@ -23,13 +23,8 @@ home.prototype = {
 		var view = this.view;
 		var slug = this.slug;
 		var page = this.page = utils.loadPage(req, view, done);
-		
-		console.log(document.getElementById('page-'+slug));
-		
-		//var DOM = queryDom({ el: document.getElementById('page-'+slug) });
-		//console.log(DOM);
-
-		var container = document.getElementById('page-home');
+				
+		var container = document.getElementById('page-'+slug);
 		var DOM = queryDom({el: container});
 		console.log(DOM);
 
