@@ -28,7 +28,7 @@ home.prototype = {
 		
 		var DOM  = this.DOM = queryDom({ el: document.getElementById('page-'+slug) });
 		console.log(DOM);
-
+		
 	},
 
 	resize: function(width, height) {
