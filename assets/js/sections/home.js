@@ -1,32 +1,30 @@
 var framework = require('../framework');
 var config = require('../config');
 var utils = require('../utils');
-var $ = require('dom-select');
 var Tween = require('gsap');
 var classes = require('dom-classes');
+
+var $ = require('dom-select');
+var queryDom = require('query-dom-components');
 
 function home() {
 	
 	this.view = config.$view;
 	this.slug = 'home';
 	this.page;
+	this.DOM;
 
 };
 
 home.prototype = {
     
-    init: function(req, done) {
+	init: function(req, done) {
     	
-		var _this = this;
 		var view = this.view;
+		var page = this.page = utils.loadPage(req, view, done);
+		var DOM  = this.DOM = queryDom({ el: page });
 		
-		// notifying bigwheel we're done before we actually are
-		// https://github.com/bigwheel-framework/documentation/blob/master/sections-init.md#issue-2-notifying-bigwheel-were-done-before-we-actually-are
-		var page = this.page = utils.loadPage(req, view, function(){
-
-			done();
-
-		});
+		console.log(this.DOM);
 
 	},
 
