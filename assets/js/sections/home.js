@@ -24,8 +24,7 @@ home.prototype = {
 		var slug = this.slug;
 		var page = this.page = utils.loadPage(req, view, done);
 				
-		var container = document.getElementById('page-'+slug);
-		var DOM = queryDom({el: container});
+		var DOM = queryDom({el: document.getElementById('page-'+slug)});
 		console.log(DOM);
 
 	},
