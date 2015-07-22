@@ -20,13 +20,17 @@ home.prototype = {
     	
 	init: function(req, done) {
     		
+    		var self = this;
 		var view = this.view;
 		var slug = this.slug;
-		var page = this.page = utils.loadPage(req, view, done);
-		
-		var container = document.querySelector('.page-home');
-		var DOM = queryDom({el: container});
-		console.log(DOM);
+		var page = this.page = utils.loadPage(req, view, function(){
+
+			var DOM = self.DOM = queryDom({ el: page });
+			//console.log(self.DOM);
+			
+			done();
+
+		});
 
 	},
 

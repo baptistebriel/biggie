@@ -31,7 +31,7 @@ var utils = {
 			route += routeDuplicate;
 		}
 
-		console.log(route);
+		//console.log(route);
 
 		// create page
 		var page = document.createElement('div');
