@@ -16,7 +16,7 @@
     "gsap": "^1.16.1",
     "please-ajax": "^1.0.8",
     "promise": "^6.1.0",
-    "query-dom-components": "0.0.3",
+    "query-dom-components": "0.0.4",
     "tape": "^3.5.0"
   },
   "devDependencies": {

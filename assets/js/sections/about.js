@@ -1,7 +1,6 @@
 var framework = require('../framework');
 var config = require('../config');
 var utils = require('../utils');
-var $ = require('dom-select');
 var Tween = require('gsap');
 var classes = require('dom-classes');
 
@@ -15,7 +14,7 @@ function about() {
 
 about.prototype = {
     
-     init: function(req, done) {
+	init: function(req, done) {
 
 		var view = this.view;
 		var page = this.page = utils.loadPage(req, view, done);
