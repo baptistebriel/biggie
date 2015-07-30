@@ -26,7 +26,7 @@ home.prototype = {
 			// query your dom components from html and store them into a JavaScript object
 			// https://github.com/dcamilleri/query-dom-components
 			var DOM = self.DOM = query({ el: page });
-			console.log(self.DOM);
+			// console.log(self.DOM);
 			
 			done();
 
