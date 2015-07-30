@@ -23,12 +23,22 @@ home.prototype = {
 		var slug = this.slug;
 		var page = this.page = utils.loadPage(req, view, function(){
 
+			// query your dom components from html and store them into a JavaScript object
+			// https://github.com/dcamilleri/query-dom-components
 			var DOM = self.DOM = query({ el: page });
 			console.log(self.DOM);
+
+			self.special();
 			
 			done();
 
 		});
+
+	},
+
+	special: function(){
+
+		console.log('test');
 
 	},
 
