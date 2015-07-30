@@ -27,18 +27,10 @@ home.prototype = {
 			// https://github.com/dcamilleri/query-dom-components
 			var DOM = self.DOM = query({ el: page });
 			console.log(self.DOM);
-
-			self.special();
 			
 			done();
 
 		});
-
-	},
-
-	special: function(){
-
-		console.log('test');
 
 	},
 
