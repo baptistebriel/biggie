@@ -16,7 +16,7 @@ var utils = {
 	don't forget the callback (done)
 	see https://github.com/bigwheel-framework/documentation/blob/master/gotchas.md#forgetting-to-call-done
 	---------- */
-	loadPage : function(req, view, callback){
+	loadPage : function(req, view, done){
 		
 		var route = req.route;
 		var routeDuplicate = req.params.id;
@@ -25,29 +25,24 @@ var utils = {
 		// - add 'default' route case
 		if(route === "/") route = '/home';
 		// - replace :id in route by the current section's id to get the template
-		// not sure if it's the best way to do it tho...
+		// needs to be ':id' in routes.js
 		if(routeDuplicate) {
-			route = route.substring(0, route.length - 3); // needs to be ':id' in routes.js
+			route = route.substring(0, route.length - 3);
 			route += routeDuplicate;
 		}
 
-		//console.log(route);
-
-		// create page
 		var page = document.createElement('div');
 		var pageClass = route.substr(1).replace('/', '-');
 		page.id = "page-"+pageClass;
 		page.className = "page page-"+pageClass;
 
-		// add content
 		ajax.get(config.BASE+'templates'+route+'.html', {
 			success: function (object) {
 				page.innerHTML = object.data;
-				callback(); // a.k.a. 'done();'
+				done();
 			}
 		});
 
-		// return page
 		return view.appendChild(page);
 
 	}
