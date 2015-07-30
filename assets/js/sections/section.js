@@ -20,7 +20,7 @@ section.prototype = {
 		var page = this.page = utils.loadPage(req, view, done);
 
 	},
-
+	
 	resize: function(width, height) {
 	
 		//console.log(width+' | '+height);
@@ -38,7 +38,7 @@ section.prototype = {
 			clearProps: 'all',
 			onComplete: done
 		});
-
+		
 	},
 
 	animateOut: function(req, done) {
