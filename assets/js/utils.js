@@ -20,7 +20,7 @@ var utils = {
 		
 		var route = req.route;
 		var routeDuplicate = req.params.id;
-
+		
 		// TODO :
 		// - add 'default' route case
 		if(route === "/") route = '/home';

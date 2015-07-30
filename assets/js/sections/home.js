@@ -47,7 +47,8 @@ home.prototype = {
 		Tween.from(this.page, 1, {
 			y: -100, 
 			autoAlpha: 0,
-			ease: Expo.easeInOut, 
+			ease: Expo.easeInOut,
+			clearProps: 'all',
 			onComplete: done
 		});
 
@@ -61,6 +62,7 @@ home.prototype = {
 			y: 100,
 			autoAlpha: 0,
 			ease: Expo.easeInOut,
+			clearProps: 'all',
 			onComplete: done
 		});
 
