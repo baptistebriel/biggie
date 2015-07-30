@@ -3,8 +3,6 @@ var config = require('../config');
 var utils = require('../utils');
 var Tween = require('gsap');
 var classes = require('dom-classes');
-
-var $ = require('dom-select');
 var queryDom = require('query-dom-components');
 
 function home() {
@@ -26,7 +24,7 @@ home.prototype = {
 		var page = this.page = utils.loadPage(req, view, function(){
 
 			var DOM = self.DOM = queryDom({ el: page });
-			//console.log(self.DOM);
+			console.log(self.DOM);
 			
 			done();
 
