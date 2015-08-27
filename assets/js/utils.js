@@ -30,11 +30,14 @@ var utils = {
 			route = route.substring(0, route.length - 3);
 			route += routeDuplicate;
 		}
+		
+		var slug = route.substr(1).replace('/', '-');
 
-		var page = document.createElement('div');
-		var pageClass = route.substr(1).replace('/', '-');
-		page.id = "page-"+pageClass;
-		page.className = "page page-"+pageClass;
+		var page = utils.createEl({
+			selector: 'div',
+			id: 'page-'+slug,
+			styles: 'page page-'+slug
+		});
 
 		ajax.get(config.BASE+'templates'+route+'.html', {
 			success: function (object) {
@@ -45,6 +48,19 @@ var utils = {
 
 		return view.appendChild(page);
 
+	},
+	
+	createEl: function(opt) {
+
+		opt = opt || {};
+
+		var el = document.createElement(opt.selector);
+
+		el.id = opt.id;
+		el.className = opt.styles;
+
+		return el;
+	
 	}
 
 }
