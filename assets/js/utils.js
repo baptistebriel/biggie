@@ -56,9 +56,9 @@ var utils = {
 
 		var el = document.createElement(opt.selector);
 
-		el.id = opt.id;
-		el.className = opt.styles;
-
+		opt.id && (el.id = opt.id);
+		opt.styles && (el.className = opt.styles);
+		
 		return el;
 	
 	}
