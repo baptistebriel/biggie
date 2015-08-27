@@ -56,7 +56,7 @@ var utils = {
 
 		var el = document.createElement(opt.selector);
 		
-		"a" == opt.selector && (el.href = opt.link);
+		"a" == opt.selector && opt.link && (el.href = opt.link);
 		
 		opt.id && (el.id = opt.id);
 		opt.styles && (el.className = opt.styles);
