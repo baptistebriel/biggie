@@ -63,6 +63,12 @@ var utils = {
 		
 		return el;
 	
+	},
+	
+	sliceArray: function(opt) {
+
+		return Array.prototype.slice.call(opt, 0);
+	
 	}
 
 }
