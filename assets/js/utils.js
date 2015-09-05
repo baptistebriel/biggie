@@ -53,14 +53,19 @@ var utils = {
 	createEl: function(opt) {
 
 		opt = opt || {};
-
+		
 		var el = document.createElement(opt.selector);
 		
 		"a" == opt.selector && opt.link && (el.href = opt.link);
-		
+		"img" == opt.selector && opt.src && (el.src = opt.src);
+
 		opt.id && (el.id = opt.id);
 		opt.styles && (el.className = opt.styles);
-		
+
+		opt.html && (el.innerHTML = opt.html);
+
+		opt.children && (el.appendChild(opt.children));
+
 		return el;
 	
 	},
