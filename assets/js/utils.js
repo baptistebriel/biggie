@@ -3,7 +3,8 @@ require
 ---------- */
 var framework = require('./framework');
 var config = require('./config');
-var ajax = require('please-ajax')(window);
+var ajax = require('please-ajax');
+var Tween = require('gsap');
 
 /* ----------
 utils object
@@ -56,8 +57,23 @@ var utils = {
 		
 		var el = document.createElement(opt.selector);
 		
-		"a" == opt.selector && opt.link && (el.href = opt.link);
-		"img" == opt.selector && opt.src && (el.src = opt.src);
+		if(opt.attr) for(var index in opt.attr)
+			opt.attr.hasOwnProperty(index) && el.setAttribute(index,opt.attr[index]);
+		
+		"a" == opt.selector && opt.link && (
+			el.href = opt.link,
+			opt.target && el.setAttribute("target", opt.target)
+		);
+		
+		"img" == opt.selector && opt.src && (
+			el.src = opt.src,
+			opt.lazyload && (
+				el.style["opacity"] = "0",
+				el.onload = function(){
+					TweenLite.to(el, 1, {autoAlpha: 1});
+				}
+			)
+		);
 
 		opt.id && (el.id = opt.id);
 		opt.styles && (el.className = opt.styles);
