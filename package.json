@@ -13,7 +13,7 @@
     "dom-select": "0.0.0",
     "domready": "^1.0.7",
     "gsap": "^1.16.1",
-    "please-ajax": "^1.0.8",
+    "please-ajax": "^2.0.0",
     "promise": "^6.1.0",
     "query-dom-components": "0.0.4",
     "tape": "^3.5.0"
