@@ -65,6 +65,15 @@ p{
 }
 
 /* -----
+Preloader
+----- */
+.preloader{
+	.fixed();
+	text-align: center;
+	background: @white;
+}
+
+/* -----
 Navigation
 ----- */
 nav{
@@ -132,7 +141,9 @@ View
 	.page{
 		.fixed();
 		.size(100%,100%);
+		.hidden();
 		text-align: center;
+		transform: translate3d(0,-100px,0);
 	}
 }
 

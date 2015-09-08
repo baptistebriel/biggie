@@ -28,7 +28,8 @@ Preloader.prototype = {
 
         this.el = utils.createEl({
             selector: 'div',
-            styles: 'preloader'
+            styles: 'preloader',
+            html: '<div class="vertical-center"><div class="vertical-el"><p>Preloader</p></div></div>'
         });
         
         this.view.insertBefore(this.el, page);

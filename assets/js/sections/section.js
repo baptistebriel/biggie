@@ -31,11 +31,10 @@ section.prototype = {
 
 		classes.add(config.$body, 'is-'+this.slug);
 
-		Tween.from(this.page, 1, {
-			y: -100, 
-			autoAlpha: 0,
+		Tween.to(this.page, 1, {
+			y: 0, 
+			autoAlpha: 1,
 			ease: Expo.easeInOut,
-			clearProps: 'all',
 			onComplete: done
 		});
 		
@@ -45,7 +44,7 @@ section.prototype = {
 
 		classes.remove(config.$body, 'is-'+this.slug);
 
-		Tween.to(this.page, 0.25, {
+		Tween.to(this.page, 0.7, {
 			y: 100,
 			autoAlpha: 0,
 			ease: Expo.easeInOut,
