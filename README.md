@@ -7,9 +7,9 @@ Biggie is a JavaScript application boilerplate based on [bigwheel](https://githu
 
 `git clone https://github.com/BaptisteBriel/biggie.git`
 
-### Install Node
+### Install node
 
-If you don't have npm, install [Node.js](https://nodejs.org/).  
+If you don't have npm, install [node.js](https://nodejs.org/).  
 Now, copy all npm dependecies in your project folder with `npm i`.  
 You should now have a node_modules folder at the root directory.  
 
@@ -26,7 +26,7 @@ You should be able to start `gulp watch` from Terminal.
 ## Directory
 
 - `/assets/` contains all LESS files and JavaScript files
-- `/assets/js/sections/` the subfolder used by bigwheel for all pages, defined by routes
+- `/assets/js/sections/` the subfolder used by bigwheel for all sections, defined by routes
 - `/build/` where gulp copy the minified version of /assets/ for both CSS and JavaScript
 - `/data/` used for storing data JSON files
 - `/gulp/ (and gulpfile.js)` for gulp tasks
