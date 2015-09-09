@@ -1,6 +1,5 @@
 # biggie
 Biggie is a JavaScript application boilerplate based on [bigwheel](https://github.com/bigwheel-framework), a minimalist framework from [Jam3](http://www.jam3.com/).
-It uses [Node.js](https://nodejs.org/) for [npm](https://www.npmjs.com/) modules, and [browerify](http://browserify.org/) to make it work on any browsers.
 
 # Getting Started
 
