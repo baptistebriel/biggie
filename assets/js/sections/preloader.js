@@ -1,6 +1,7 @@
 var config = require('../config');
 var utils = require('../utils');
 var Tween = require('gsap');
+var classes = require('dom-classes');
 
 function Preloader(onComplete) {
     
@@ -15,6 +16,8 @@ Preloader.prototype = {
     init: function(req, done) {
         
         var self = this;
+
+        classes.add(config.$body, 'is-loading');
         
         this.createDOM();
         
@@ -39,7 +42,7 @@ Preloader.prototype = {
     resize: function(width, height) {},
     
     animateIn: function(req, done) {
-
+        
         var self = this;
         
         var tl = new TimelineMax({ paused: true, onComplete: function(){
@@ -61,6 +64,9 @@ Preloader.prototype = {
     },
     
     destroy: function(req, done) {
+
+        classes.add(config.$body, 'is-loaded');
+        classes.remove(config.$body, 'is-loading');
 
         this.view.removeChild(this.el);
         

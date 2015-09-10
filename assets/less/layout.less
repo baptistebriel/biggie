@@ -25,7 +25,6 @@ html{
 }
 
 body{
-
 	.nav-current(){
 		color: @grey-dark;
 		text-decoration: underline;
@@ -42,6 +41,12 @@ body{
 		}
 	}
 
+	&.is-loaded {
+		nav,
+		footer{
+			opacity: 1;
+		}
+	}
 }
 
 /* -----
@@ -71,6 +76,11 @@ Preloader
 	.fixed();
 	text-align: center;
 	background: @white;
+}
+nav,
+footer{
+	opacity: 0;
+	transition: opacity .7s @easeOutExpo;
 }
 
 /* -----
