@@ -10,7 +10,7 @@ function home() {
 	this.view = config.$view;
 	this.slug = 'home';
 	this.page;
-	this.DOM;
+	this.ui;
 
 };
 
@@ -25,8 +25,8 @@ home.prototype = {
 
 			// query your dom components from html and store them into a JavaScript object
 			// https://github.com/dcamilleri/query-dom-components
-			var DOM = self.DOM = query({ el: page });
-			// console.log(self.DOM);
+			var ui = self.ui = query({ el: page });
+			// console.log(self.ui);
 			
 			done();
 
