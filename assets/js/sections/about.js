@@ -17,7 +17,7 @@ about.prototype = {
 	init: function(req, done) {
 
 		var view = this.view;
-		var page = this.page = utils.loadPage(req, view, done);
+		var page = this.page = utils.loadHTML(req, view, done);
 
 	},
 
