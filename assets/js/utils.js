@@ -10,15 +10,12 @@ var Tween = require('gsap');
 utils object
 ---------- */
 var utils = {
-
+	
 	/* ----------
-	function to load AJAX templates
-	used on section.init
-	don't forget the callback (done)
-	see https://github.com/bigwheel-framework/documentation/blob/master/gotchas.md#forgetting-to-call-done
+	get the slug from route
 	---------- */
-	loadPage : function(req, view, done){
-		
+	getSlug: function(req) {
+
 		var route = req.route;
 		var routeDuplicate = req.params.id;
 		
@@ -31,8 +28,19 @@ var utils = {
 			route = route.substring(0, route.length - 3);
 			route += routeDuplicate;
 		}
-		
+
 		var slug = route.substr(1).replace('/', '-');
+		
+		return slug;
+		
+	},
+
+	/* ----------
+	create the page
+	---------- */
+	createPage: function(req, slug) {
+		
+		var slug = slug || utils.getSlug(req);
 
 		var page = utils.createEl({
 			selector: 'div',
@@ -40,7 +48,21 @@ var utils = {
 			styles: 'page page-'+slug
 		});
 
-		ajax.get(config.BASE+'templates'+route+'.html', {
+		return page;
+
+	},
+
+	/* ----------
+	load '.html' files with AJAX
+	don't forget the callback (done)
+	see https://github.com/bigwheel-framework/documentation/blob/master/gotchas.md#forgetting-to-call-done
+	---------- */
+	loadHTML: function(req, view, done) {
+		
+		var slug = utils.getSlug(req);
+		var page = utils.createPage(req, slug);
+		
+		ajax.get(config.BASE+'templates/'+slug+'.html', {
 			success: function (object) {
 				page.innerHTML = object.data;
 				done();
@@ -51,6 +73,9 @@ var utils = {
 
 	},
 	
+	/* ----------
+	create HTML elements
+	---------- */
 	createEl: function(opt) {
 
 		opt = opt || {};
@@ -86,6 +111,10 @@ var utils = {
 	
 	},
 	
+	/* ----------
+	return an array
+	usefull to iterate into a NodeList
+	---------- */
 	sliceArray: function(opt) {
 
 		return Array.prototype.slice.call(opt, 0);
