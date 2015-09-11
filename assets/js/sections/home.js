@@ -21,7 +21,7 @@ home.prototype = {
     		var self = this;
 		var view = this.view;
 		var slug = this.slug;
-		var page = this.page = utils.loadPage(req, view, function(){
+		var page = this.page = utils.loadHTML(req, view, function(){
 
 			// query your dom components from html and store them into a JavaScript object
 			// https://github.com/dcamilleri/query-dom-components
