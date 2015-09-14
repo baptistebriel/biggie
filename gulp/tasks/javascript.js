@@ -3,6 +3,7 @@
 var watchify = require('watchify');
 var browserify = require('browserify');
 var gulp = require('gulp');
+var changed = require('gulp-changed');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var gutil = require('gulp-util');
@@ -19,6 +20,8 @@ var customOpts = {
 var opts = assign({}, watchify.args, customOpts);
 var b = watchify(browserify(opts));
 
+var DEST = './build';
+
 gulp.task('js', bundle);
 b.on('update', bundle);
 b.on('log', gutil.log);
@@ -27,12 +30,13 @@ function bundle() {
   return b.bundle()
     .on('error', gutil.log.bind(gutil, 'Browserify Error'))
     .pipe(source('app'))
+    .pipe(changed(DEST))
     .pipe(rename({ extname: '.js' }))
-    .pipe(gulp.dest('./build/'))
+    .pipe(gulp.dest(DEST))
     .pipe(buffer())
     .pipe(uglify())
     // .pipe(maps.init({loadMaps: true}))
     // .pipe(maps.write('./'))
     .pipe(rename({ extname: '.min.js' }))
-    .pipe(gulp.dest('./build'))
+    .pipe(gulp.dest(DEST))
 }
