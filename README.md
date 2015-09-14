@@ -3,7 +3,7 @@ Biggie is a JavaScript application boilerplate based on [bigwheel](https://githu
 
 # Getting Started
 
-`git clone https://github.com/BaptisteBriel/biggie.git && npm i`
+`git clone https://github.com/BaptisteBriel/biggie.git folder-name && cd folder-name && npm i && gulp`
 
 ## Directory
 
