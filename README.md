@@ -3,14 +3,7 @@ Biggie is a JavaScript application boilerplate based on [bigwheel](https://githu
 
 # Getting Started
 
-### Clone the repository and install dependencies
-
 `git clone https://github.com/BaptisteBriel/biggie.git && npm i`
-
-##### tasks
-- less compilation to css
-- browserify and minify javascript files
-- watch for css and js files, livereload with browser-sync
 
 ## Directory
 
@@ -34,6 +27,12 @@ module.exports = {
 ```
 
 Your site will be at `http://localhost:3000/` by default using [browser-sync](http://www.browsersync.io/)
+
+## Gulp tasks
+
+- less compilation to css
+- browserify and minify javascript files
+- watch for css and js files, livereload with browser-sync
 
 ## Bigwheel Documentation
 
