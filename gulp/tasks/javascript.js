@@ -34,7 +34,7 @@ function bundle() {
     .pipe(rename({ extname: '.js' }))
     .pipe(gulp.dest(DEST))
     .pipe(buffer())
-    .pipe(uglify())
+    .pipe(uglify().on('error', gutil.log))
     // .pipe(maps.init({loadMaps: true}))
     // .pipe(maps.write('./'))
     .pipe(rename({ extname: '.min.js' }))
