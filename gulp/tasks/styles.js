@@ -6,6 +6,7 @@ var less = require('gulp-less');
 var autoprefixer = require('gulp-autoprefixer');
 var minifycss = require('gulp-minify-css');
 var rename = require("gulp-rename");
+var browserSync = require('browser-sync');
 
 gulp.task('less', function() {
     gulp.src('assets/less/layout.less')
@@ -16,5 +17,6 @@ gulp.task('less', function() {
         }))
         .pipe(minifycss())
         .pipe(rename("app.min.css"))
-        .pipe(gulp.dest('build/'));
+        .pipe(gulp.dest('build/'))
+        .pipe(browserSync.stream());
 });
