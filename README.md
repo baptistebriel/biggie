@@ -3,31 +3,20 @@ Biggie is a JavaScript application boilerplate based on [bigwheel](https://githu
 
 # Getting Started
 
-### Clone the repository
+### Clone the repository and install dependencies
 
-`git clone https://github.com/BaptisteBriel/biggie.git`
-
-### Install node
-
-If you don't have npm, install [node.js](https://nodejs.org/).  
-Now, copy all npm dependecies in your project folder with `npm i`.  
-You should now have a node_modules folder at the root directory.  
-
-### Install gulp
-
-Install [gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md) globally with `npm install --global gulp`  
-You should be able to start `gulp watch` from Terminal.
+`git clone https://github.com/BaptisteBriel/biggie.git && npm i`
 
 ##### tasks
 - less compilation to css
 - browserify and minify javascript files
-- watch for assets/less/layout.less and assets/js/*.js
+- watch for css and js files, livereload with browser-sync
 
 ## Directory
 
-- `/assets/` contains all LESS files and JavaScript files
+- `/assets/` contains all LESS & JavaScript files
 - `/assets/js/sections/` the subfolder used by bigwheel for all sections, defined by routes
-- `/build/` where gulp copy the minified version of /assets/ for both CSS and JavaScript
+- `/build/` where gulp copy the minified version of /assets/ for both CSS & JavaScript
 - `/data/` used for storing data JSON files
 - `/gulp/ (and gulpfile.js)` for gulp tasks
 - `/templates/` HTML templates used for AJAX calls
@@ -39,13 +28,12 @@ Define the `PATH` url and the subfolder `BASE` into `/assets/js/config.js`
 
 ```javascript
 module.exports = {
-	PATH: 'http://localhost:8888',
-	BASE: '/biggie/'
+	PATH: 'http://localhost:3000',
+	BASE: '/',
 }
 ```
 
-Your site will be at `http://localhost:8888/biggie/` here. Using a simple [HTTP server](https://www.npmjs.com/package/http-server) or MAMP, etc...
-This allows you to work on a subfolder or a different server before pushing it into prod in two secs.
+Your site will be at `http://localhost:3000/` by default using [browser-sync](http://www.browsersync.io/)
 
 ## Bigwheel Documentation
 
