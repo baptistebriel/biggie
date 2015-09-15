@@ -1,7 +1,7 @@
 # biggie
 Biggie is a JavaScript application boilerplate based on [bigwheel](https://github.com/bigwheel-framework), a minimalist framework from [Jam3](http://www.jam3.com/).
 
-# Getting Started
+## Getting Started
 
 `git clone https://github.com/BaptisteBriel/biggie.git folder-name && cd folder-name && npm i && gulp`
 
