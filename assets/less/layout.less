@@ -6,13 +6,22 @@
 @import "require/_keyframes.less";
 @import "require/_gradients.less";
 
-*{
+* {
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
+
 	text-rendering: optimizeLegibility;
+
 	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
 }
 
 html,
@@ -20,28 +29,29 @@ body{
 	overflow: hidden;
 }
 
-html{
+html {
 	font: 100%/1.5 @font;
+	box-sizing: border-box;
 }
 
-body{
-	.nav-current(){
+body {
+	.nav-current() {
 		color: @grey-dark;
 		text-decoration: underline;
 	}
 
-	&.is-home{
+	&.is-home {
 		.nav-item[href='#!/home']{
 			.nav-current();
 		}
 	}
-	&.is-about{
+	&.is-about {
 		.nav-item[href='#!/about']{
 			.nav-current();
 		}
 	}
 
-	&.is-loaded {
+	&.is-loaded {
 		nav,
 		footer{
 			opacity: 1;
@@ -52,33 +62,33 @@ body{
 /* -----
 Common
 ----- */
-a{
+a {
 	color: @black;
 	text-decoration: underline;
 
-	&:hover{
+	&:hover {
 		color: @base;
 	}
 }
 
-ul{
+ul {
 	list-style-type: none;
 }
 
-p{
+p {
 	font: @14px/@25px @font;
 }
 
 /* -----
 Preloader
 ----- */
-.preloader{
+.preloader {
 	.fixed();
 	text-align: center;
 	background: @white;
 }
 nav,
-footer{
+footer {
 	opacity: 0;
 	transition: opacity .7s @easeOutExpo;
 }
@@ -86,7 +96,7 @@ footer{
 /* -----
 Navigation
 ----- */
-nav{
+nav {
 	position: fixed; top: 0; right: 0; left: 0;
 	display: block;
 	text-align: center;
@@ -94,19 +104,19 @@ nav{
 	margin-top: 2rem;
 	z-index: 3;
 
-	.nav-item{
+	.nav-item {
 		color: @grey-light;
 		cursor: pointer;
 		margin: 0 5px;
 		text-decoration: none;
 
-		&:hover{
+		&:hover {
 			text-decoration: underline;
 		}
 	}
 }
 
-footer{
+footer {
 	position: fixed; bottom: 0; right: 0; left: 0;
 	display: block;
 	text-align: center;
@@ -114,13 +124,13 @@ footer{
 	margin-bottom: 1rem;
 	z-index: 3;
 
-	p{
+	p {
 		color: @grey-light;
 
-		a{
+		a {
 			color: @grey-dark;
 
-			&:hover{
+			&:hover {
 				text-decoration: underline;
 			}
 		}
@@ -130,12 +140,12 @@ footer{
 /* -----
 Utils
 ----- */
-.vertical-center{
+.vertical-center {
 	display: table;
 	position: relative;
 	.size(100%,100%);
 	
-	.vertical-el{
+	.vertical-el {
 		display: table-cell;
 		vertical-align: middle
 	}
@@ -144,11 +154,11 @@ Utils
 /* -----
 View
 ----- */
-.page-view{
+.page-view {
 	.fixed();
 	.size(100%,100%);
 
-	.page{
+	.page {
 		.fixed();
 		.size(100%,100%);
 		.hidden();
