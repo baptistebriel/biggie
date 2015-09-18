@@ -1,7 +1,7 @@
 {
-  "name": "bigwheel",
+  "name": "biggie",
   "version": "1.0.0",
-  "description": "Bigwheel + Gulp + Browserify",
+  "description": "minimalist javascript frontend framework with bigwheel",
   "main": "gulpfile.js",
   "dependencies": {
     "bigwheel": "2.2.1",
