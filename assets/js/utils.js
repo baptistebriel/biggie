@@ -12,7 +12,19 @@ utils object
 var utils = {
 	
 	/* ----------
-	get the slug from route
+	return a clamped value
+	between min & max
+	utils.clamp(0, VALUE, 1);
+	---------- */
+	clamp: function(min, value, max) {
+
+		return Math.max(min, Math.min(value, max))
+
+	},
+	
+	/* ----------
+	get the slug from a route
+	utils.getSlug(req);
 	---------- */
 	getSlug: function(req) {
 
@@ -36,7 +48,9 @@ var utils = {
 	},
 
 	/* ----------
-	create the page
+	create a page with slug
+	apply ID & classes
+	utils.createPage(req, slug);
 	---------- */
 	createPage: function(req, slug) {
 		
@@ -56,6 +70,7 @@ var utils = {
 	load '.html' files with AJAX
 	don't forget the callback (done)
 	see https://github.com/bigwheel-framework/documentation/blob/master/gotchas.md#forgetting-to-call-done
+	utils.loadHTML(req, view, done);
 	---------- */
 	loadHTML: function(req, view, done) {
 		
@@ -75,6 +90,7 @@ var utils = {
 	
 	/* ----------
 	create HTML elements
+	utils.createEl({ selector: 'div' });
 	---------- */
 	createEl: function(opt) {
 
@@ -114,6 +130,7 @@ var utils = {
 	/* ----------
 	return an array
 	usefull to iterate into a NodeList
+	utils.sliceArray(document.querySelectorAll('.els'));
 	---------- */
 	sliceArray: function(opt) {
 
