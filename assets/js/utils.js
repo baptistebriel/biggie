@@ -11,21 +11,6 @@ utils object
 ---------- */
 var utils = {
 	
-	/* ----------
-	return a clamped value
-	between min & max
-	utils.clamp(0, VALUE, 1);
-	---------- */
-	clamp: function(min, value, max) {
-
-		return Math.max(min, Math.min(value, max))
-
-	},
-	
-	/* ----------
-	get the slug from a route
-	utils.getSlug(req);
-	---------- */
 	getSlug: function(req) {
 
 		var route = req.route;
@@ -44,14 +29,8 @@ var utils = {
 		var slug = route.substr(1).replace('/', '-');
 		
 		return slug;
-		
 	},
-
-	/* ----------
-	create a page with slug
-	apply ID & classes
-	utils.createPage(req, slug);
-	---------- */
+	
 	createPage: function(req, slug) {
 		
 		var slug = slug || utils.getSlug(req);
@@ -63,15 +42,8 @@ var utils = {
 		});
 
 		return page;
-
 	},
-
-	/* ----------
-	load '.html' files with AJAX
-	don't forget the callback (done)
-	see https://github.com/bigwheel-framework/documentation/blob/master/gotchas.md#forgetting-to-call-done
-	utils.loadHTML(req, view, done);
-	---------- */
+	
 	loadHTML: function(req, view, done) {
 		
 		var slug = utils.getSlug(req);
@@ -85,13 +57,8 @@ var utils = {
 		});
 
 		return view.appendChild(page);
-
 	},
 	
-	/* ----------
-	create HTML elements
-	utils.createEl({ selector: 'div' });
-	---------- */
 	createEl: function(opt) {
 
 		opt = opt || {};
@@ -124,18 +91,31 @@ var utils = {
 		opt.children && (el.appendChild(opt.children));
 
 		return el;
-	
 	},
 	
-	/* ----------
-	return an array
-	usefull to iterate into a NodeList
-	utils.sliceArray(document.querySelectorAll('.els'));
-	---------- */
 	sliceArray: function(opt) {
 
 		return Array.prototype.slice.call(opt, 0);
+	},
 	
+	clamp: function(min, value, max) {
+
+		return Math.max(min, Math.min(value, max));
+	},
+	
+	lerp: function(t, a, b) {
+		
+		return a + t * (b - a);
+	},
+	
+	norm: function (t, a, b){
+		
+		return (t - a) / (b - a);
+	},
+	
+	map: function(t, a0, b0, a1, b1){
+		
+		return utils.lerp(utils.norm(t, a0, b0 ), a1, b1);
 	}
 
 }
