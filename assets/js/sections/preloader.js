@@ -3,6 +3,8 @@ var utils = require('../utils');
 var Tween = require('gsap');
 var classes = require('dom-classes');
 
+TweenLite.defaultEase = Expo.easeOut;
+
 function Preloader(onComplete) {
     
     this.preloaded = onComplete;
