@@ -17,11 +17,11 @@ var utils = {
 		getRect: function(top, right, bottom, left) {
 
 			return 'rect('+ top +'px,'+ right +'px,'+ bottom +'px,'+ left +'px)';
-			
+
 		}
 
 	},
-	
+
 	/* ----------
 	JS utils
 	---------- */
@@ -39,7 +39,7 @@ var utils = {
 
 		}
 
-	},
+	}
 	
 	/* ----------
 	biggie utils

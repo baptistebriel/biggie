@@ -14,8 +14,8 @@ module.exports = {
 	@path, {string}
 	site base URL, for AJAX requests
 	---------- */
-	PATH: '',
-	BASE: '/',
+	PATH: 'http://baptistebriel.github.io',
+	BASE: '/biggie/',
 	
 	/* ----------
 	DOM nodes
