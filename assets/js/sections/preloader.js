@@ -1,7 +1,7 @@
 var config = require('../config');
-var utils = require('../utils');
 var Tween = require('gsap');
 var classes = require('dom-classes');
+var create = require('dom-create-element');
 
 TweenLite.defaultEase = Expo.easeOut;
 
@@ -11,6 +11,9 @@ function Preloader(onComplete) {
     this.view = config.$view;
     this.el = null;
 
+    // use a real userAgent sniffing
+    this.isMobile = config.isMobile = config.width <= 1024 ? true : false;
+    
 };
 
 Preloader.prototype = {
@@ -31,7 +34,7 @@ Preloader.prototype = {
         
         var page = this.view.firstChild;
 
-        this.el = utils.createEl({
+        this.el = create({
             selector: 'div',
             styles: 'preloader',
             html: '<div class="vertical-center"><div class="vertical-el"><p>Preloader</p></div></div>'
@@ -41,7 +44,12 @@ Preloader.prototype = {
         
     },
 
-    resize: function(width, height) {},
+    resize: function(width, height) {
+
+        config.width = width;
+        config.height = height;
+
+    },
     
     animateIn: function(req, done) {
         

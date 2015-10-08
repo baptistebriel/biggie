@@ -9,8 +9,8 @@ function home() {
 	
 	this.view = config.$view;
 	this.slug = 'home';
-	this.page;
-	this.ui;
+	this.page = null;
+	this.ui = null;
 
 };
 
@@ -21,22 +21,23 @@ home.prototype = {
     		var self = this;
 		var view = this.view;
 		var slug = this.slug;
-		var page = this.page = utils.loadHTML(req, view, function(){
+		var page = this.page = utils.biggie.loadHTML(req, view, this.dataAdded.bind(this, done));
 
-			// query your dom components from html and store them into a JavaScript object
-			// https://github.com/dcamilleri/query-dom-components
-			var ui = self.ui = query({ el: page });
+	},
+
+	dataAdded: function(done) {
+
+		this.ui = query({ el: this.page });
 			
-			done();
-
-		});
+		done();
 
 	},
 
 	resize: function(width, height) {
 	
-		//console.log(width+' | '+height);
-	
+		config.width = width;
+		config.height = height;
+		
 	},
 
 	animateIn: function(req, done) {
@@ -66,6 +67,8 @@ home.prototype = {
 	},
 
 	destroy: function(req, done) {
+
+		this.ui = null;
 
 		this.page.parentNode.removeChild(this.page);
 

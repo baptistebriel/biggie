@@ -8,7 +8,7 @@ function about() {
 	
 	this.view = config.$view;
 	this.slug = 'about';
-	this.page;
+	this.page = null;
 
 };
 
@@ -17,13 +17,14 @@ about.prototype = {
 	init: function(req, done) {
 
 		var view = this.view;
-		var page = this.page = utils.loadHTML(req, view, done);
+		var page = this.page = utils.biggie.loadHTML(req, view, done);
 
 	},
 
 	resize: function(width, height) {
 	
-		//console.log(width+' | '+height);
+		config.width = width;
+		config.height = height;
 	
 	},
 
