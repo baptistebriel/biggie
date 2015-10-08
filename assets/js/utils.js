@@ -40,7 +40,7 @@ var utils = {
 
 		}
 
-	}
+	},
 	
 	/* ----------
 	biggie utils
