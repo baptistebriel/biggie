@@ -64,7 +64,7 @@ var utils = {
 			var slug = route.substr(1).replace('/', '-');
 
 			return slug;
-
+			
 		},
 
 		createPage: function(req, slug) {
