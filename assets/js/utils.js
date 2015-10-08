@@ -64,7 +64,7 @@ var utils = {
 			var slug = route.substr(1).replace('/', '-');
 
 			return slug;
-			
+
 		},
 
 		createPage: function(req, slug) {
@@ -82,11 +82,11 @@ var utils = {
 		},
 		
 		loadHTML: function(req, view, done) {
-
+			
 			var slug = utils.biggie.getSlug(req);
 			var page = utils.biggie.createPage(req, slug);
 			
-			ajax.get(config.PATH+config.BASE+'/templates/'+slug+'.html', {
+			ajax.get(config.BASE+'/templates/'+slug+'.html', {
 				success: function (object) {
 					page.innerHTML = object.data;
 					done();
