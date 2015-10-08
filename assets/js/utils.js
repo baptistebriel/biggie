@@ -1,6 +1,7 @@
 /* ----------
 require
 ---------- */
+var config = require('./config');
 var ajax = require('please-ajax');
 var create = require('dom-create-element');
 
@@ -82,7 +83,7 @@ var utils = {
 		},
 		
 		loadHTML: function(req, view, done) {
-			
+
 			var slug = utils.biggie.getSlug(req);
 			var page = utils.biggie.createPage(req, slug);
 			
