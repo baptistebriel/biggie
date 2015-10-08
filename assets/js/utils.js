@@ -86,7 +86,7 @@ var utils = {
 			var slug = utils.biggie.getSlug(req);
 			var page = utils.biggie.createPage(req, slug);
 			
-			ajax.get('/templates/'+slug+'.html', {
+			ajax.get(config.BASE+'/templates/'+slug+'.html', {
 				success: function (object) {
 					page.innerHTML = object.data;
 					done();
