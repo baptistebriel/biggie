@@ -2,7 +2,7 @@
 require
 ---------- */
 var config = require('./config');
-var ajax = require('please-ajax');
+var request = require('superagent');
 var create = require('dom-create-element');
 
 /* ----------
@@ -67,11 +67,11 @@ var utils = {
 			return slug;
 
 		},
-		
+
 		createPage: function(req, slug) {
 			
 			var slug = slug || utils.biggie.getSlug(req);
-			
+
 			var page = create({
 				selector: 'div',
 				id: 'page-'+slug,
@@ -86,13 +86,13 @@ var utils = {
 
 			var slug = utils.biggie.getSlug(req);
 			var page = utils.biggie.createPage(req, slug);
-			
-			// ajax.get(config.PATH+config.BASE+'/templates/'+slug+'.html', {
-			ajax.get('templates/'+slug+'.html', {
-				success: function (object) {
-					page.innerHTML = object.data;
-					done();
-				}
+
+			request
+			.get('templates/'+slug+'.html')
+			.end(function(err, res){
+				if (err) throw (err);
+				page.innerHTML = res.text;
+				done();
 			});
 
 			return view.appendChild(page);
