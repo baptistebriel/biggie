@@ -67,11 +67,11 @@ var utils = {
 			return slug;
 
 		},
-
+		
 		createPage: function(req, slug) {
 			
 			var slug = slug || utils.biggie.getSlug(req);
-
+			
 			var page = create({
 				selector: 'div',
 				id: 'page-'+slug,
@@ -87,7 +87,8 @@ var utils = {
 			var slug = utils.biggie.getSlug(req);
 			var page = utils.biggie.createPage(req, slug);
 			
-			ajax.get(config.BASE+'/templates/'+slug+'.html', {
+			// ajax.get(config.PATH+config.BASE+'/templates/'+slug+'.html', {
+			ajax.get('templates/'+slug+'.html', {
 				success: function (object) {
 					page.innerHTML = object.data;
 					done();
