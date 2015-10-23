@@ -1,9 +1,5 @@
-/* ----------
-require
----------- */
-var config = require('./config');
-var request = require('superagent');
-var create = require('dom-create-element');
+import request from 'superagent';
+import create from 'dom-create-element';
 
 /* ----------
 utils
@@ -14,23 +10,23 @@ var utils = {
 	CSS utils
 	---------- */
 	css: {
-
+		
 		getRect: function(top, right, bottom, left) {
 
 			return 'rect('+ top +'px,'+ right +'px,'+ bottom +'px,'+ left +'px)';
 
 		}
-
+		
 	},
 
 	/* ----------
 	JS utils
 	---------- */
 	js: {
-
+		
 		sliceArray: function(opt) {
 
-			return Array.prototype.slice.call(opt, 0);
+			return Array.from(opt);
 
 		},
 
@@ -46,7 +42,7 @@ var utils = {
 	biggie utils
 	---------- */
 	biggie: {
-
+		
 		getSlug: function(req) {
 			
 			var route = req.route;
@@ -82,7 +78,7 @@ var utils = {
 
 		},
 		
-		loadHTML: function(req, view, done) {
+		loadPage: function(req, view, done) {
 
 			var slug = utils.biggie.getSlug(req);
 			var page = utils.biggie.createPage(req, slug);
@@ -103,4 +99,4 @@ var utils = {
 
 }
 
-module.exports = utils;
+export default utils

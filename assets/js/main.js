@@ -1,10 +1,3 @@
-/* ----------
-biggie
-main entry point
----------- */
-var framework = require('./framework');
+import framework from './framework';
 
-/* ----------
-init bigwheel framework
----------- */
 framework.init();

@@ -1,9 +1,8 @@
-var framework = require('../framework');
-var config = require('../config');
-var utils = require('../utils');
-var Tween = require('gsap');
-var classes = require('dom-classes');
-var query = require('query-dom-components');
+import config from '../config';
+import utils from '../utils';
+import classes from 'dom-classes';
+import query from 'query-dom-components';
+import gsap from 'gsap';
 
 function home() {
 	
@@ -21,8 +20,8 @@ home.prototype = {
     		var self = this;
 		var view = this.view;
 		var slug = this.slug;
-		var page = this.page = utils.biggie.loadHTML(req, view, this.dataAdded.bind(this, done));
-
+		var page = this.page = utils.biggie.loadPage(req, view, this.dataAdded.bind(this, done));
+		
 	},
 
 	dataAdded: function(done) {
@@ -44,7 +43,7 @@ home.prototype = {
 
 		classes.add(config.$body, 'is-'+this.slug);
 
-		Tween.to(this.page, 1, {
+		TweenLite.to(this.page, 1, {
 			y: 0,
 			autoAlpha: 1,
 			ease: Expo.easeInOut,
@@ -57,7 +56,7 @@ home.prototype = {
 
 		classes.remove(config.$body, 'is-'+this.slug);
 
-		Tween.to(this.page, 0.7, {
+		TweenLite.to(this.page, 0.7, {
 			y: 100,
 			autoAlpha: 0,
 			ease: Expo.easeInOut,
@@ -76,4 +75,4 @@ home.prototype = {
 
 };
 
-module.exports = home;
+export default home

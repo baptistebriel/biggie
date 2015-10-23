@@ -1,13 +1,13 @@
 'use strict';
 
+var gulp = require('gulp');
 var watchify = require('watchify');
 var browserify = require('browserify');
-var gulp = require('gulp');
+var babelify = require('babelify');
 var changed = require('gulp-changed');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var gutil = require('gulp-util');
-var maps = require('gulp-sourcemaps');
 var assign = require('lodash.assign');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
@@ -18,25 +18,22 @@ var customOpts = {
 };
 
 var opts = assign({}, watchify.args, customOpts);
-var b = watchify(browserify(opts));
-
-var DEST = './build';
+var bundler = watchify(browserify(opts).transform(babelify));
+var destination = './build';
 
 gulp.task('js', bundle);
-b.on('update', bundle);
-b.on('log', gutil.log);
+bundler.on('update', bundle);
+bundler.on('log', gutil.log);
 
 function bundle() {
-  return b.bundle()
+  return bundler.bundle()
     .on('error', gutil.log.bind(gutil, 'Browserify Error'))
     .pipe(source('app'))
-    .pipe(changed(DEST))
+    .pipe(changed(destination))
     .pipe(rename({ extname: '.js' }))
-    .pipe(gulp.dest(DEST))
+    .pipe(gulp.dest(destination))
     .pipe(buffer())
     .pipe(uglify().on('error', gutil.log))
-    // .pipe(maps.init({loadMaps: true}))
-    // .pipe(maps.write('./'))
     .pipe(rename({ extname: '.min.js' }))
-    .pipe(gulp.dest(DEST))
+    .pipe(gulp.dest(destination))
 }

@@ -1,7 +1,7 @@
-var config = require('../config');
-var Tween = require('gsap');
-var classes = require('dom-classes');
-var create = require('dom-create-element');
+import config from '../config';
+import gsap from 'gsap';
+import classes from 'dom-classes';
+import create from 'dom-create-element';
 
 TweenLite.defaultEase = Expo.easeOut;
 
@@ -10,7 +10,7 @@ function Preloader(onComplete) {
     this.preloaded = onComplete;
     this.view = config.$view;
     this.el = null;
-
+    
     // use a real userAgent sniffing
     this.isMobile = config.isMobile = config.width <= 1024 ? true : false;
     
@@ -86,4 +86,4 @@ Preloader.prototype = {
 
 };
 
-module.exports = Preloader;
+export default Preloader

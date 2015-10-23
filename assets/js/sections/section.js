@@ -1,8 +1,7 @@
-var framework = require('../framework');
-var config = require('../config');
-var utils = require('../utils');
-var Tween = require('gsap');
-var classes = require('dom-classes');
+import config from '../config';
+import utils from '../utils';
+import gsap from 'gsap';
+import classes from 'dom-classes';
 
 function section() {
 	
@@ -13,11 +12,11 @@ function section() {
 };
 
 section.prototype = {
-    
+    	
 	init: function(req, done) {
-
+		
 		var view = this.view;
-		var page = this.page = utils.biggie.loadHTML(req, view, done);
+		var page = this.page = utils.biggie.loadPage(req, view, done);
 
 	},
 	
@@ -32,7 +31,7 @@ section.prototype = {
 
 		classes.add(config.$body, 'is-'+this.slug);
 
-		Tween.to(this.page, 1, {
+		TweenLite.to(this.page, 1, {
 			y: 0, 
 			autoAlpha: 1,
 			ease: Expo.easeInOut,
@@ -45,7 +44,7 @@ section.prototype = {
 
 		classes.remove(config.$body, 'is-'+this.slug);
 
-		Tween.to(this.page, 0.7, {
+		TweenLite.to(this.page, 0.7, {
 			y: 100,
 			autoAlpha: 0,
 			ease: Expo.easeInOut,
@@ -63,4 +62,4 @@ section.prototype = {
 
 };
 
-module.exports = section;
+export default section

@@ -1,13 +1,10 @@
-/* ----------
-require
----------- */
-var domselect = require('dom-select');
+import domselect from 'dom-select';
 
 /* ----------
 config object
 global shared variables
 ---------- */
-module.exports = {
+var config = {
 	
 	/* ----------
 	vars
@@ -41,3 +38,5 @@ module.exports = {
 	isMobile: false
 
 }
+
+export default config
