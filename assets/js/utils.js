@@ -65,15 +65,13 @@ let utils = {
 		},
 
 		createPage: function(req, slug) {
-			
-			let slug = slug || utils.biggie.getSlug(req);
-
+				
 			let page = create({
 				selector: 'div',
 				id: 'page-'+slug,
 				styles: 'page page-'+slug
 			});
-
+			
 			return page;
 
 		},
