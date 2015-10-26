@@ -20,8 +20,6 @@ Preloader.prototype = {
     
     init: function(req, done) {
         
-        var self = this;
-
         classes.add(config.$body, 'is-loading');
         
         this.createDOM();
@@ -32,7 +30,7 @@ Preloader.prototype = {
 
     createDOM: function() {
         
-        var page = this.view.firstChild;
+        let page = this.view.firstChild;
 
         this.el = create({
             selector: 'div',
@@ -52,13 +50,11 @@ Preloader.prototype = {
     },
     
     animateIn: function(req, done) {
-        
-        var self = this;
-        
-        var tl = new TimelineMax({ paused: true, onComplete: function(){
+           
+        let tl = new TimelineMax({ paused: true, onComplete: () => {
             done();
             // call this.preloaded to bring the first route
-            self.preloaded();
+            this.preloaded();
         }});
         tl.to(this.el, 1, {autoAlpha: 1});
         tl.restart();
@@ -67,7 +63,7 @@ Preloader.prototype = {
     
     animateOut: function(req, done) {
 
-        var tl = new TimelineMax({ paused: true, onComplete: done });
+        let tl = new TimelineMax({ paused: true, onComplete: done });
         tl.to(this.el, 1, {autoAlpha: 0});
         tl.restart();
         

@@ -17,10 +17,9 @@ home.prototype = {
     	
 	init: function(req, done) {
     		
-    		var self = this;
-		var view = this.view;
-		var slug = this.slug;
-		var page = this.page = utils.biggie.loadPage(req, view, this.dataAdded.bind(this, done));
+		let view = this.view;
+		let slug = this.slug;
+		let page = this.page = utils.biggie.loadPage(req, view, this.dataAdded.bind(this, done));
 		
 	},
 

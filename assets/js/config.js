@@ -4,7 +4,7 @@ import domselect from 'dom-select';
 config object
 global shared variables
 ---------- */
-var config = {
+let config = {
 	
 	/* ----------
 	vars

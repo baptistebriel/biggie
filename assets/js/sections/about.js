@@ -8,15 +8,15 @@ function about() {
 	this.view = config.$view;
 	this.slug = 'about';
 	this.page = null;
-
+	
 };
 
 about.prototype = {
     
 	init: function(req, done) {
 
-		var view = this.view;
-		var page = this.page = utils.biggie.loadPage(req, view, done);
+		let view = this.view;
+		let page = this.page = utils.biggie.loadPage(req, view, done);
 
 	},
 

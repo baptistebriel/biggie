@@ -1,10 +1,10 @@
-import request from 'superagent';
+import ajax from 'please-ajax';
 import create from 'dom-create-element';
 
 /* ----------
 utils
 ---------- */
-var utils = {
+let utils = {
 	
 	/* ----------
 	CSS utils
@@ -45,8 +45,8 @@ var utils = {
 		
 		getSlug: function(req) {
 			
-			var route = req.route;
-			var routeDuplicate = req.params.id;
+			let route = req.route;
+			let routeDuplicate = req.params.id;
 			
 			// TODO :
 			// - add 'default' route case
@@ -58,7 +58,7 @@ var utils = {
 				route += routeDuplicate;
 			}
 
-			var slug = route.substr(1).replace('/', '-');
+			let slug = route.substr(1).replace('/', '-');
 
 			return slug;
 
@@ -66,9 +66,9 @@ var utils = {
 
 		createPage: function(req, slug) {
 			
-			var slug = slug || utils.biggie.getSlug(req);
+			let slug = slug || utils.biggie.getSlug(req);
 
-			var page = create({
+			let page = create({
 				selector: 'div',
 				id: 'page-'+slug,
 				styles: 'page page-'+slug
@@ -79,16 +79,15 @@ var utils = {
 		},
 		
 		loadPage: function(req, view, done) {
+			
+			let slug = utils.biggie.getSlug(req);
+			let page = utils.biggie.createPage(req, slug);
 
-			var slug = utils.biggie.getSlug(req);
-			var page = utils.biggie.createPage(req, slug);
-
-			request
-			.get('templates/'+slug+'.html')
-			.end(function(err, res){
-				if (err) throw (err);
-				page.innerHTML = res.text;
-				done();
+			ajax.get('templates/'+slug+'.html', {
+				success: (object) => {
+					page.innerHTML = object.data;
+					done();
+				}
 			});
 
 			return view.appendChild(page);

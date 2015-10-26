@@ -4,7 +4,7 @@ import bigwheel from 'bigwheel';
 create our framework instance
 see https://github.com/bigwheel-framework/documentation/blob/master/quickstart.md#bigwheel-quick-start
 ---------- */
-var framework = bigwheel((done) => {
+let framework = bigwheel((done) => {
 	done({
 		// https://github.com/bigwheel-framework/documentation/blob/master/misc.md#overlap
 		overlap: false,
