@@ -3,42 +3,34 @@ import utils from '../utils';
 import classes from 'dom-classes';
 import query from 'query-dom-components';
 import gsap from 'gsap';
+import Default from './default';
 
-function home() {
+class Home extends Default {
 	
-	this.view = config.$view;
-	this.slug = 'home';
-	this.page = null;
-	this.ui = null;
-
-};
-
-home.prototype = {
-    	
-	init: function(req, done) {
-    		
-		let view = this.view;
-		let slug = this.slug;
-		let page = this.page = utils.biggie.loadPage(req, view, this.dataAdded.bind(this, done));
+	constructor(opt) {
 		
-	},
+		super(opt);
 
-	dataAdded: function(done) {
+		this.slug = 'home';
+		this.ui = null;
+
+	}
+	
+	init(req, done) {
+
+		super.init(req, done);
+
+	}
+
+	dataAdded(done) {
 
 		this.ui = query({ el: this.page });
-			
+
 		done();
 
-	},
+	}
 
-	resize: function(width, height) {
-	
-		config.width = width;
-		config.height = height;
-		
-	},
-
-	animateIn: function(req, done) {
+	animateIn(req, done) {
 
 		classes.add(config.$body, 'is-'+this.slug);
 
@@ -49,9 +41,9 @@ home.prototype = {
 			onComplete: done
 		});
 
-	},
-	
-	animateOut: function(req, done) {
+	}
+
+	animateOut(req, done) {
 
 		classes.remove(config.$body, 'is-'+this.slug);
 
@@ -62,16 +54,18 @@ home.prototype = {
 			onComplete: done
 		});
 
-	},
+	}
 
-	destroy: function(req, done) {
+	destroy(req, done) {
 
 		this.ui = null;
 
 		this.page.parentNode.removeChild(this.page);
+		
+		done();
 
 	}
 
-};
+}
 
-export default home
+export default Home

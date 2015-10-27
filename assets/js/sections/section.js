@@ -2,32 +2,31 @@ import config from '../config';
 import utils from '../utils';
 import gsap from 'gsap';
 import classes from 'dom-classes';
+import Default from './default';
 
-function section() {
+class Section extends Default {
 	
-	this.view = config.$view;
-	this.slug = 'section';
-	this.page = null;
-
-};
-
-section.prototype = {
-    	
-	init: function(req, done) {
+	constructor(opt) {
 		
-		let view = this.view;
-		let page = this.page = utils.biggie.loadPage(req, view, done);
+		super(opt);
 
-	},
-	
-	resize: function(width, height) {
-	
-		config.width = width;
-		config.height = height;
-	
-	},
+		this.slug = 'section';
 
-	animateIn: function(req, done) {
+	}
+	
+	init(req, done) {
+
+		super.init(req, done);
+
+	}
+	
+	dataAdded(done) {
+		
+		done();
+
+	}
+
+	animateIn(req, done) {
 
 		classes.add(config.$body, 'is-'+this.slug);
 
@@ -37,10 +36,10 @@ section.prototype = {
 			ease: Expo.easeInOut,
 			onComplete: done
 		});
-		
-	},
 
-	animateOut: function(req, done) {
+	}
+
+	animateOut(req, done) {
 
 		classes.remove(config.$body, 'is-'+this.slug);
 
@@ -52,14 +51,16 @@ section.prototype = {
 			onComplete: done
 		});
 
-	},
+	}
 
-	destroy: function(req, done) {
+	destroy(req, done) {
 
 		this.page.parentNode.removeChild(this.page);
+		
+		done();
 
 	}
 
-};
+}
 
-export default section
+export default Section

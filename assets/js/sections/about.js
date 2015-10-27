@@ -1,34 +1,36 @@
 import config from '../config';
 import utils from '../utils';
 import classes from 'dom-classes';
+import query from 'query-dom-components';
 import gsap from 'gsap';
+import Default from './default';
 
-function about() {
+class About extends Default {
 	
-	this.view = config.$view;
-	this.slug = 'about';
-	this.page = null;
-	
-};
-
-about.prototype = {
-    
-	init: function(req, done) {
-
-		let view = this.view;
-		let page = this.page = utils.biggie.loadPage(req, view, done);
-
-	},
-
-	resize: function(width, height) {
-	
-		config.width = width;
-		config.height = height;
-	
-	},
-
-	animateIn: function(req, done) {
+	constructor(opt) {
 		
+		super(opt);
+
+		this.slug = 'about';
+
+	}
+	
+	init(req, done) {
+
+		super.init(req, done);
+
+	}
+
+	dataAdded(done) {
+
+		this.ui = query({ el: this.page });
+
+		done();
+
+	}
+
+	animateIn(req, done) {
+
 		classes.add(config.$body, 'is-'+this.slug);
 
 		TweenLite.to(this.page, 1, {
@@ -38,9 +40,9 @@ about.prototype = {
 			onComplete: done
 		});
 
-	},
+	}
 
-	animateOut: function(req, done) {
+	animateOut(req, done) {
 
 		classes.remove(config.$body, 'is-'+this.slug);
 
@@ -51,14 +53,16 @@ about.prototype = {
 			onComplete: done
 		});
 
-	},
+	}
 
-	destroy: function(req, done) {
+	destroy(req, done) {
 
 		this.page.parentNode.removeChild(this.page);
+		
+		done();
 
 	}
 
-};
+}
 
-export default about
+export default About
