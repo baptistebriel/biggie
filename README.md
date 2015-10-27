@@ -1,24 +1,35 @@
 # biggie
-Biggie is a JavaScript application boilerplate based on [bigwheel](https://github.com/bigwheel-framework), a minimalist framework from [Jam3](http://www.jam3.com/).
+Biggie is a JavaScript application boilerplate written in ES2015 based on [bigwheel](https://github.com/bigwheel-framework), a minimalist framework from [Jam3](http://www.jam3.com/).
+Be sure to check out the full [documentation](https://github.com/bigwheel-framework/documentation) for bigwheel before you're getting started.
 
 ## Getting Started
 
 `git clone https://github.com/BaptisteBriel/biggie.git folder-name`
 
-`cd folder-name`
-
-`npm i`
-
-`gulp`
+`cd folder-name && npm i && gulp`
 
 ## Directory
 
 - `/assets/` contains all LESS & JavaScript files
-- `/assets/js/sections/` the subfolder used by bigwheel for all sections, defined by routes
+  - `/js/sections/` the subfolder used by bigwheel for all sections, defined by routes
 - `/build/` where gulp copy the minified version of /assets/ for both CSS & JavaScript
-- `/data/` used for storing data JSON files
-- `/gulp/ (and gulpfile.js)` for gulp tasks
+- `/gulp/ + gulpfile.js` for gulp tasks
 - `/templates/` HTML templates used for AJAX calls
+
+## Gulp tasks
+
+- `less` compilation to `css`
+- [browserify](http://browserify.org/) + [babelify](https://babeljs.io) & uglify `js` files
+  - use `build/app.js` for development, `build/app.min.js` for production
+- watch for css and js files, livereload with browser-sync
+
+## Todo
+
+- [ ] rewrite router (`bw-router`) to use [with pushStates](https://github.com/bigwheel-framework/bw-router/issues/12) *(wip, almost done)*
+  - [x] first, make it [work](https://github.com/baptistebriel/bw-router)
+  - [ ] write tests
+- [x] biggie + [wordpress](https://wordpress.org) *(will push to a new branch)*
+- [x] biggie + [cockpit](http://getcockpit.com) *(will push to a new branch)*
 
 ### Defining absolute URLs
 
@@ -32,18 +43,28 @@ module.exports = {
 }
 ```
 
-Your site will be at `http://localhost:3000/` by default using [browser-sync](http://www.browsersync.io/)
+Your site will be at `http://localhost:3000` by default using [browser-sync](http://www.browsersync.io)
 
-## Gulp tasks
+### JS utils
 
-- less compilation to css
-- browserify and minify javascript files
-- watch for css and js files, livereload with browser-sync
+Under `/assets/js/utils.js` there's a couple of `utils` functions:
 
-## Bigwheel Documentation
+- css
+  - `getRect(top, right, bottom, left)` returns the css rect string with clip values
+- js
+  - `arrayFrom(opt)` returns an array from an argument (usually a `NodeList`)
+  - `clamp(min, value, max)` return a clamped value between min and max values
+  - `scrollTop` return either `pageYOffset` or `document.documentElement||document.body.scrollTop`
+- biggie
+  - `getSlug(req)` return the section slug (i.e. `home`) from bighweel's `req` parameter
+  - `createPage(req, slug)` create an `HTML element` and returns it
+  - `loadPage(req, view, done)` used on all sections's `init` to create the page
 
-[https://github.com/bigwheel-framework/documentation](https://github.com/bigwheel-framework/documentation)
+### Examples
 
-## License
+- my own [portfolio](http://bbriel.me)
+- more to come!
 
-MIT, see [LICENSE.md](http://github.com/bigwheel-framework/bigwheel/blob/master/LICENSE).
+### License
+
+MIT, see [LICENSE.md](https://github.com/baptistebriel/biggie/blob/gh-pages/LICENSE).

@@ -6,44 +6,42 @@ utils
 ---------- */
 let utils = {
 	
-	/* ----------
-	CSS utils
-	---------- */
 	css: {
 		
-		getRect: function(top, right, bottom, left) {
+		getRect(top=0, right, bottom, left=0) {
 
-			return 'rect('+ top +'px,'+ right +'px,'+ bottom +'px,'+ left +'px)';
+			return `rect(${top}px, ${right}px, ${bottom}px, ${left}px)`;
 
 		}
 		
 	},
-
-	/* ----------
-	JS utils
-	---------- */
+	
 	js: {
 		
-		sliceArray: function(opt) {
-
+		arrayFrom(opt) {
+			
 			return Array.from(opt);
-
+			
 		},
 
-		clamp: function(min, value, max) {
+		clamp(min, value, max) {
 
 			return Math.max(min, Math.min(value, max));
 
+		},
+		
+		scrollTop() {
+
+			if (window.pageYOffset) return window.pageYOffset;
+			return document.documentElement.clientHeight ? document.documentElement.scrollTop : document.body.scrollTop;
+			
 		}
 
 	},
 	
-	/* ----------
-	biggie utils
-	---------- */
 	biggie: {
 		
-		getSlug: function(req) {
+		getSlug(req) {
 			
 			let route = req.route;
 			let routeDuplicate = req.params.id;
@@ -59,12 +57,12 @@ let utils = {
 			}
 
 			let slug = route.substr(1).replace('/', '-');
-
+			
 			return slug;
 
 		},
-
-		createPage: function(req, slug) {
+		
+		createPage(req, slug) {
 				
 			let page = create({
 				selector: 'div',
@@ -76,11 +74,11 @@ let utils = {
 
 		},
 		
-		loadPage: function(req, view, done) {
+		loadPage(req, view, done) {
 			
 			let slug = utils.biggie.getSlug(req);
 			let page = utils.biggie.createPage(req, slug);
-
+			
 			ajax.get('templates/'+slug+'.html', {
 				success: (object) => {
 					page.innerHTML = object.data;

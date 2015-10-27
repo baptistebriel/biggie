@@ -14,10 +14,10 @@ gulp.task('serve', ['less', 'js'], function() {
 			middleware: [ history() ]
 		}
 	});
-
+	
 	gulp.watch('assets/less/**/*.less', ['less']);
 	gulp.watch('assets/js/**/*.js', ['js']);
-
+	
 	gulp.watch(['*.html', 'build/*.css', 'build/*.js'], {cwd: ''}, reload);
 	
 });
