@@ -11,7 +11,7 @@
     "dom-classes": "0.0.1",
     "dom-create-element": "^1.0.0",
     "dom-event": "0.0.4",
-    "dom-select": "0.0.0",
+    "dom-select": "1.0.1",
     "gsap": "1.18.0",
     "please-ajax": "^2.0.1",
     "promise": "7.0.4",
