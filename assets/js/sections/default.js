@@ -1,7 +1,7 @@
 import framework from '../framework';
 import config from '../config';
 import utils from '../utils';
-import event from 'dom-events';
+import event from 'dom-event';
 import $ from 'dom-select';
 
 class Default {
