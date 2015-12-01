@@ -6,7 +6,7 @@
   "dependencies": {
     "bigwheel": "2.2.1",
     "bw-router": "1.3.0",
-    "bw-viewmediator": "2.0.1",
+    "bw-viewmediator": "2.1.0",
     "bw-vm": "2.0.3",
     "dom-classes": "0.0.1",
     "dom-create-element": "^1.0.0",
