@@ -4,7 +4,7 @@ Be sure to check out the full [documentation](https://github.com/bigwheel-framew
 
 ## Getting Started
 
-`git clone https://github.com/BaptisteBriel/biggie.git folder-name`
+`git clone https://github.com/baptistebriel/biggie.git folder-name`
 
 `cd folder-name && npm i && gulp`
 
