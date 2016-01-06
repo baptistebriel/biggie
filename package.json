@@ -9,7 +9,7 @@
     "bw-viewmediator": "2.0.1",
     "bw-vm": "2.0.3",
     "dom-classes": "0.0.1",
-    "dom-create-element": "^1.0.0",
+    "dom-create-element": "^1.0.1",
     "dom-event": "0.0.4",
     "dom-select": "1.0.1",
     "gsap": "1.18.0",
