@@ -21,7 +21,7 @@ Be sure to check out the full [documentation](https://github.com/bigwheel-framew
 - `less` compilation to `css`
 - [browserify](http://browserify.org/) + [babelify](https://babeljs.io) & uglify `js` files
   - use `build/app.js` for development, `build/app.min.js` for production
-- watch for css and js files, livereload with browser-sync
+- watch for `css` and `js` files, livereload with browser-sync
 
 ## Todo
 
@@ -60,7 +60,8 @@ Under `/assets/js/utils.js` there's a couple of `utils` functions:
 ### Examples
 
 - [oursroux.com](http://oursroux.com)
-- my own [portfolio](http://bbriel.me)
+- [pierrelevaillant.me](http://pierrelevaillant.me)
+- [bbriel.me](http://bbriel.me)
 - & more to come!
 
 ### License
