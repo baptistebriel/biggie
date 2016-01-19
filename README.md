@@ -19,7 +19,7 @@ Be sure to check out the full [documentation](https://github.com/bigwheel-framew
 ## Gulp tasks
 
 - `less` compilation to `css`
-- [browserify](http://browserify.org/) + [babelify](https://babeljs.io) & uglify `js` files
+- browserify + babelify & uglify `js` files
   - use `build/app.js` for development, `build/app.min.js` for production
 - watch for `css` and `js` files, livereload with browser-sync
 
