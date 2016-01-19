@@ -10,11 +10,35 @@ Be sure to check out the full [documentation](https://github.com/bigwheel-framew
 
 ## Directory
 
-- `/assets/` contains all LESS & JavaScript files
-  - `/js/sections/` the subfolder used by bigwheel for all sections, defined by routes
-- `/build/` where gulp copy the minified version of /assets/ for both CSS & JavaScript
-- `/gulp/ + gulpfile.js` for gulp tasks
-- `/templates/` HTML templates used for AJAX calls
+```
+biggie
+    ├── index.html
+    ├── README.md
+    ├── package.json
+    ├── gulpfile.js
+    └── gulp
+        ├── index.js
+        ├── tasks
+        └── utils
+    └── assets
+        └── less
+            ├── import
+            ├── require
+            └── layout.less
+        └── js
+            ├── config.js
+            ├── framework.js
+            ├── main.js
+            ├── routes.js
+            ├── utils.js
+            └── sections
+        └── images
+    └── build
+        ├── app.js
+        ├── app.min.js
+        └── app.min.css
+    └── templates
+```
 
 ## Gulp tasks
 
