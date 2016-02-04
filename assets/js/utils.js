@@ -4,7 +4,7 @@ import create from 'dom-create-element';
 /* ----------
 utils
 ---------- */
-let utils = {
+const utils = {
 	
 	css: {
 		
@@ -20,7 +20,7 @@ let utils = {
 		
 		arrayFrom(opt) {
 			
-			return Array.from(opt);
+			return Array.prototype.slice.call(opt, 0);
 			
 		},
 
