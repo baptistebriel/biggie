@@ -84,6 +84,7 @@ Under `/assets/js/utils.js` there's a couple of `utils` functions:
 ### Examples
 
 - [oursroux.com](http://oursroux.com)
+- [flavinsky.com](http://flavinsky.com)
 - [pierrelevaillant.me](http://pierrelevaillant.me)
 - [bbriel.me](http://bbriel.me)
 - & more to come!
