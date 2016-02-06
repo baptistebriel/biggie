@@ -8,6 +8,8 @@ Be sure to check out the full [documentation](https://github.com/bigwheel-framew
 
 `cd folder-name && npm i && gulp`
 
+Your site will be at `http://localhost:3000` by default using [browser-sync](http://www.browsersync.io)
+
 ## Directory
 
 ```
@@ -51,20 +53,6 @@ biggie
 
 - [x] biggie + [wordpress](https://wordpress.org) *(will push to a new branch)*
 - [x] biggie + [cockpit](http://getcockpit.com) *(will push to a new branch)*
-
-### Defining absolute URLs
-
-For some AJAX reasons, we have global variables that defines where your site is.  
-Define the `PATH` url and the subfolder `BASE` into `/assets/js/config.js`
-
-```javascript
-module.exports = {
-	PATH: 'http://localhost:3000',
-	BASE: '/',
-}
-```
-
-Your site will be at `http://localhost:3000` by default using [browser-sync](http://www.browsersync.io)
 
 ### JS utils
 
