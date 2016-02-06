@@ -1,3 +1,3 @@
-import framework from './framework';
+import framework from 'framework'
 
-framework.init();
+framework.init()

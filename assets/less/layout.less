@@ -30,24 +30,7 @@ html {
 }
 
 body {
-	.nav-current() {
-		color: @grey-dark;
-		text-decoration: underline;
-	}
-
-	&.is-home {
-		.nav-item[href='#!/home']{
-			.nav-current();
-		}
-	}
-	&.is-about {
-		.nav-item[href='#!/about']{
-			.nav-current();
-		}
-	}
-
 	&.is-loaded {
-		nav,
 		footer{
 			opacity: 1;
 		}

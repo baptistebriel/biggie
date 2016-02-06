@@ -1,5 +1,5 @@
-import config from '../config';
-import utils from '../utils';
+import config from 'config'
+import utils from 'utils'
 import gsap from 'gsap';
 import classes from 'dom-classes';
 import Default from './default';
@@ -8,27 +8,28 @@ class Section extends Default {
 	
 	constructor(opt) {
 		
-		super(opt);
+		super(opt)
 
-		this.slug = 'section';
+		this.slug = 'section'
 
 	}
 	
 	init(req, done) {
 
-		super.init(req, done);
+		super.init(req, done)
 
 	}
 	
 	dataAdded(done) {
-		
-		done();
 
+		super.dataAdded()
+		
+		done()
 	}
 
 	animateIn(req, done) {
 
-		classes.add(config.$body, 'is-'+this.slug);
+		classes.add(config.$body, `is-${this.slug}`)
 
 		TweenLite.to(this.page, 1, {
 			y: 0, 
@@ -36,12 +37,11 @@ class Section extends Default {
 			ease: Expo.easeInOut,
 			onComplete: done
 		});
-
 	}
 
 	animateOut(req, done) {
 
-		classes.remove(config.$body, 'is-'+this.slug);
+		classes.remove(config.$body, `is-${this.slug}`)
 
 		TweenLite.to(this.page, 0.7, {
 			y: 100,
@@ -49,18 +49,17 @@ class Section extends Default {
 			ease: Expo.easeInOut,
 			clearProps: 'all',
 			onComplete: done
-		});
-
+		})
 	}
 
 	destroy(req, done) {
 
-		this.page.parentNode.removeChild(this.page);
+		super.destroy()
+
+		this.page.parentNode.removeChild(this.page)
 		
-		done();
-
+		done()
 	}
-
 }
 
 export default Section

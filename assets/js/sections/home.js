@@ -1,71 +1,64 @@
-import config from '../config';
-import utils from '../utils';
+import config from 'config'
+import utils from 'utils'
 import classes from 'dom-classes';
-import query from 'query-dom-components';
-import gsap from 'gsap';
-import Default from './default';
+import Default from './default'
 
 class Home extends Default {
 	
 	constructor(opt) {
 		
-		super(opt);
+		super(opt)
 
-		this.slug = 'home';
-		this.ui = null;
-
+		this.slug = 'home'
+		this.ui = null
 	}
 	
 	init(req, done) {
 
-		super.init(req, done);
-
+		super.init(req, done)
 	}
 
 	dataAdded(done) {
 
-		this.ui = query({ el: this.page });
+		super.dataAdded()
 
-		done();
-
+		done()
 	}
 
 	animateIn(req, done) {
 
-		classes.add(config.$body, 'is-'+this.slug);
-
+		classes.add(config.$body, `is-${this.slug}`)
+		
 		TweenLite.to(this.page, 1, {
 			y: 0,
 			autoAlpha: 1,
 			ease: Expo.easeInOut,
 			onComplete: done
-		});
-
+		})
 	}
 
 	animateOut(req, done) {
-
-		classes.remove(config.$body, 'is-'+this.slug);
+		
+		classes.remove(config.$body, `is-${this.slug}`)
 
 		TweenLite.to(this.page, 0.7, {
 			y: 100,
 			autoAlpha: 0,
 			ease: Expo.easeInOut,
 			onComplete: done
-		});
-
+		})
 	}
 
 	destroy(req, done) {
 
-		this.ui = null;
+		super.destroy()
 
-		this.page.parentNode.removeChild(this.page);
+		this.ui = null
+
+		this.page.parentNode.removeChild(this.page)
 		
-		done();
-
+		done()
 	}
-
 }
 
 export default Home
