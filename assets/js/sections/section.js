@@ -62,4 +62,4 @@ class Section extends Default {
 	}
 }
 
-export default Section
+module.exports = Section

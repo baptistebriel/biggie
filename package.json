@@ -23,6 +23,7 @@
     "query-dom-components": "0.0.7"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.5.0",
     "babelify": "^6.4.0",
     "browser-sync": "^2.9.3",
     "browserify": "^11.1.0",
@@ -44,6 +45,19 @@
     "vinyl-source-stream": "^1.1.0",
     "vinyl-transform": "^1.0.0",
     "watchify": "^3.6.1"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "only": "assets/js/",
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -54,4 +54,4 @@ class Default {
     }
 }
 
-export default Default
+module.exports = Default

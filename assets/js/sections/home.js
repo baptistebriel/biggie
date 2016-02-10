@@ -1,6 +1,6 @@
 import config from 'config'
 import utils from 'utils'
-import classes from 'dom-classes';
+import classes from 'dom-classes'
 import Default from './default'
 
 class Home extends Default {
@@ -61,4 +61,4 @@ class Home extends Default {
 	}
 }
 
-export default Home
+module.exports = Home

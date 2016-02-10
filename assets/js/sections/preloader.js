@@ -73,4 +73,4 @@ class Preloader {
 	}
 }
 
-export default Preloader
+module.exports = Preloader

@@ -58,4 +58,4 @@ class About extends Default {
 	}
 }
 
-export default About
+module.exports = About

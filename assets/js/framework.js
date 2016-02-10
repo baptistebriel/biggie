@@ -4,7 +4,7 @@ import bigwheel from 'bigwheel'
 create our framework instance
 see https://github.com/bigwheel-framework/documentation/blob/master/quickstart.md#bigwheel-quick-start
 ---------- */
-const framework = bigwheel((done) => {
+module.exports = bigwheel((done) => {
 	done({
 		// https://github.com/bigwheel-framework/documentation/blob/master/misc.md#overlap
 		overlap: false,
@@ -13,5 +13,3 @@ const framework = bigwheel((done) => {
 		routes: require('./routes')
 	})
 })
-
-export default framework

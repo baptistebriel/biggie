@@ -18,7 +18,7 @@ var customOpts = {
 };
 
 var opts = assign({}, watchify.args, customOpts);
-var bundler = watchify(browserify(opts).transform(babelify));
+var bundler = watchify(browserify(opts).transform(babelify, {presets: ["es2015"]}));
 var destination = './build';
 
 gulp.task('js', bundle);
