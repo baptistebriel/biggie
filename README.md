@@ -75,6 +75,7 @@ Under `/assets/js/utils.js` there's a couple of `utils` functions:
 - [flavinsky.com](http://flavinsky.com)
 - [pierrelevaillant.me](http://pierrelevaillant.me)
 - [bbriel.me](http://bbriel.me)
+- [bigwheel-framework/built-with-bigwheel](https://github.com/bigwheel-framework/built-with-bigwheel)
 - & more to come!
 
 ### License
