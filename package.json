@@ -38,7 +38,7 @@
     "gulp-notify": "^2.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.5.2",
-    "gulp-uglify": "^1.5.1",
+    "gulp-uglify": "^1.5.2",
     "gulp-util": "^3.0.4",
     "lodash.assign": "^3.2.0",
     "vinyl-buffer": "^1.0.0",
