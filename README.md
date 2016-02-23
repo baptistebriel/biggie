@@ -2,38 +2,6 @@
 Biggie is a JavaScript application boilerplate written in ES6 based on [bigwheel](https://github.com/bigwheel-framework), a minimalist framework from [Jam3](http://www.jam3.com/).
 Be sure to check out the full [documentation](https://github.com/bigwheel-framework/documentation) for bigwheel before you're getting started.
 
-## Directory
-
-```
-biggie
-    ├── index.html
-    ├── README.md
-    ├── package.json
-    ├── gulpfile.js
-    └── gulp
-        ├── index.js
-        ├── tasks
-        └── utils
-    └── assets
-        └── less
-            ├── import
-            ├── require
-            └── layout.less
-        └── js
-            ├── config.js
-            ├── framework.js
-            ├── main.js
-            ├── routes.js
-            ├── utils.js
-            └── sections
-        └── images
-    └── build
-        ├── app.js
-        ├── app.min.js
-        └── app.min.css
-    └── templates
-```
-
 ## Getting Started
 
 `git clone https://github.com/baptistebriel/biggie.git folder-name`
