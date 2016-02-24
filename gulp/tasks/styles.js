@@ -4,7 +4,7 @@ var gulp = require('gulp');
 var gutil = require('gulp-util');
 var less = require('gulp-less');
 var autoprefixer = require('gulp-autoprefixer');
-var minifycss = require('gulp-minify-css');
+var cleancss = require('gulp-clean-css');
 var rename = require("gulp-rename");
 var browserSync = require('browser-sync');
 
@@ -15,7 +15,7 @@ gulp.task('less', function() {
             browsers: ['last 2 versions'],
             cascade: false
         }))
-        .pipe(minifycss())
+        .pipe(cleancss())
         .pipe(rename("app.min.css"))
         .pipe(gulp.dest('build/'))
         .pipe(browserSync.stream());
