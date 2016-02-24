@@ -8,8 +8,6 @@ Be sure to check out the full [documentation](https://github.com/bigwheel-framew
 
 `cd folder-name && npm i && gulp`
 
-![](http://bbriel.me/images/biggie.png)
-
 Your site will be at `http://localhost:3000` by default using [browser-sync](http://www.browsersync.io)
 
 ## Gulp tasks
