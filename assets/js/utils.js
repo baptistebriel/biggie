@@ -1,5 +1,7 @@
+import framework from 'framework'
 import ajax from 'please-ajax'
 import create from 'dom-create-element'
+import classes from 'dom-classes'
 
 const utils = {
 	
@@ -32,18 +34,51 @@ const utils = {
 	
 	biggie: {
 		
-		getSlug(req) {
+		addRoutingEL(a) {
+
+			utils.js.arrayFrom(a).forEach((el) => el.onclick = utils.biggie.handleRoute)
+		},
+
+		removeRoutingEL(a) {
+
+			utils.js.arrayFrom(a).forEach((el) => el.onclick = null)
+		},
+
+		handleRoute(e) {
+        	
+	        const target = e.currentTarget
+
+	        if(classes.has(target, 'no-route')) return
+
+	        e.preventDefault()
+
+	        framework.go(target.getAttribute('href'))
+	    },
+
+		getSlug(req, options) {
 			
 			let route = req.route
 			
 			// TODO :
 			// - add 'default' route case
 			if(route === "/") route = '/home';
-			// - replace :id in route by the current section's id to get the template
-			// needs to be ':id' in routes.js
+			
+			// TODO:
+			// - parse req.params object
+			// - find and replace all key occurences of this object into `route`
+
+			// i.e. :
+			// - `req.params` is { category: 'digital', id: 'project-name' }
+			// - `route` is /work/:category/:id
+			// - it will not work in this case yet...
 			if(req.params.id) {
-				route = route.substring(0, route.length - 3);
-				route += req.params.id;
+				
+				// - currently we just replace :id in `route` by the current section's `id` to get the template
+				// - if it's a sub-route, we load the parent template. i.e. : /gallery/:id with sub route enabled will load gallery.html
+				const length = options.sub ? 4 : 3
+				
+				route = route.substring(0, route.length - length)
+				!options.sub && (route += req.params.id)
 			}
 			
 			return route.substr(1).replace('/', '-')
@@ -58,9 +93,11 @@ const utils = {
 			})
 		},
 		
-		loadPage(req, view, done) {
+		loadPage(req, view, done, options) {
+
+			// console.log(req);
 			
-			const slug = utils.biggie.getSlug(req)
+			const slug = utils.biggie.getSlug(req, options)
 			const page = utils.biggie.createPage(req, slug)
 			
 			ajax.get(`/templates/${slug}.html`, {
