@@ -2,6 +2,7 @@ import framework from 'framework'
 import config from 'config'
 import utils from 'utils'
 import $ from 'dom-select'
+import event from 'dom-event'
 import classes from 'dom-classes'
 import query from 'query-dom-components'
 
@@ -16,19 +17,22 @@ class Default {
         this.a = null
     }
     
-    init(req, done) {
+    init(req, done, options) {
+
+        const opts = options || { sub: false }
         
         const view = this.view
-        const page = this.page = utils.biggie.loadPage(req, view, this.dataAdded.bind(this, done))
+        const ready = this.dataAdded.bind(this, done)
+        const page = this.page = utils.biggie.loadPage(req, view, ready, opts)
     }
 
     dataAdded() {
 
         this.ui = query({ el: this.page })
         
-        this.a = $.all('a', this.page);
+        this.a = $.all('a', this.page)
 
-        utils.js.arrayFrom(this.a).forEach((el) => el.onclick = this.handleRoute)
+        utils.biggie.addRoutingEL(this.a)
     }
     
     resize(width, height) {
@@ -36,21 +40,10 @@ class Default {
         config.height = height
         config.width = width
     }
-
-    handleRoute(e) {
-        
-        const target = e.currentTarget
-
-        if(classes.has(target, 'no-route')) return
-
-        e.preventDefault()
-
-        framework.go(target.getAttribute('href'))
-    }
-
+    
     destroy() {
         
-        utils.js.arrayFrom(this.a).forEach((el) => el.onclick = null)
+        utils.biggie.removeRoutingEL(this.a)
     }
 }
 
