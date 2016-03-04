@@ -66,7 +66,6 @@ const utils = {
 			// TODO:
 			// - parse req.params object
 			// - find and replace all key occurences of this object into `route`
-
 			// i.e. :
 			// - `req.params` is { category: 'digital', id: 'project-name' }
 			// - `route` is /work/:category/:id
@@ -94,8 +93,6 @@ const utils = {
 		},
 		
 		loadPage(req, view, done, options) {
-
-			// console.log(req);
 			
 			const slug = utils.biggie.getSlug(req, options)
 			const page = utils.biggie.createPage(req, slug)

@@ -19,11 +19,8 @@ class Sub {
     }
     
     init(req, done) {
-
-        console.log('__')
-        
+           
         const id = req.params.id;
-
         const view = this.view
         const slug = this.slug = `sub-${id}`
         
@@ -34,7 +31,7 @@ class Sub {
                 </div>
             </div>
         `
-
+        
         this.el = create({
             selector: 'div',
             styles: `sub-item ${this.slug}`,
@@ -43,14 +40,10 @@ class Sub {
 
         this.view.appendChild(this.el)
         
-        console.log('sub.init()', this.slug)
-
         done()
     }
     
     animateIn(req, done) {
-
-        console.log('sub.animateIn()', this.slug)
 
         classes.add(config.$body, `is-${this.slug}`)
 
@@ -59,37 +52,26 @@ class Sub {
         const tl = new TimelineMax({ paused: true })
         tl.to(this.el, 1, { x: 0, ease: Expo.easeInOut });
         tl.restart()
-
+        
         done()
     }
 
     animateOut(req, done) {
-
-        // debugger;
-        
+         
         classes.remove(config.$body, `is-${this.slug}`)
 
         const tl = new TimelineMax({ paused: true, onComplete: done })
         this.el && tl.to(this.el, 0.7, { x: '100%', ease: Expo.easeInOut, clearProps: 'all' })
         tl.restart()
-
-        console.log('sub.animateOut()', this.slug)
     }
     
     resize(width, height) {}
 
     destroy(req, done) {
 
-        console.log('sub.destroy()', this.slug)
-
-        if(this.el) {
-            // this.el.style.display = 'none'
-            this.el.parentNode.removeChild(this.el)
-            this.el = null
-        }
-
-        console.log('__')
-
+        this.el.parentNode.removeChild(this.el)
+        this.el = null
+        
         done()
     }
 }

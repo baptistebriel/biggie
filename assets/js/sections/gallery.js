@@ -14,8 +14,6 @@ class Gallery extends Default {
     }
     
     init(req, done) {
-
-        console.warn('gallery.init()', req)
         
         super.init(req, done, { sub: req.params.id ? true : false })
     }
@@ -53,8 +51,6 @@ class Gallery extends Default {
     }
     
     destroy(req, done) {
-
-        console.warn('gallery.destroy()', req)
         
         super.destroy()
 
