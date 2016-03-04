@@ -57,30 +57,21 @@ const utils = {
 
 		getSlug(req, options) {
 			
-			let route = req.route
+			let route = req.route === "/" ? '/home' : req.route;
+			const params = Object.keys(req.params).length === 0 && JSON.stringify(req.params) === JSON.stringify({})
 			
-			// TODO :
-			// - add 'default' route case
-			if(route === "/") route = '/home';
-			
-			// TODO:
-			// - parse req.params object
-			// - find and replace all key occurences of this object into `route`
-			// i.e. :
-			// - `req.params` is { category: 'digital', id: 'project-name' }
-			// - `route` is /work/:category/:id
-			// - it will not work in this case yet...
-			if(req.params.id) {
+			if(!params) {
 				
-				// - currently we just replace :id in `route` by the current section's `id` to get the template
-				// - if it's a sub-route, we load the parent template. i.e. : /gallery/:id with sub route enabled will load gallery.html
-				const length = options.sub ? 4 : 3
-				
-				route = route.substring(0, route.length - length)
-				!options.sub && (route += req.params.id)
+				for (var key in req.params) {
+			        if (req.params.hasOwnProperty(key)) {
+
+			        	route.indexOf(key) > -1 && (route = route.replace(`:${key}`, options.sub ? '' : req.params[key]))
+			        }
+			    }
 			}
 			
-			return route.substr(1).replace('/', '-')
+			route.substring(route.length-1) == '/' && (route = route.slice(0, -1))
+			return route.substr(1)
 		},
 		
 		createPage(req, slug) {
