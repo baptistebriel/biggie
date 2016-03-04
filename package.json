@@ -1,6 +1,6 @@
 {
   "name": "biggie",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "minimalist javascript frontend framework with bigwheel",
   "main": "gulpfile.js",
   "browser": {
