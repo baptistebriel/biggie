@@ -18,6 +18,6 @@ gulp.task('serve', ['sass', 'js'], function() {
 	gulp.watch('assets/scss/*.scss', ['sass']);
 	gulp.watch('assets/js/**/*.js', ['js']);
 	
-	gulp.watch(['*.html', 'pug/*.pug', 'build/*.css', 'build/*.js'], {cwd: ''}, reload);
+	gulp.watch(['*.html', 'build/*.css', 'build/*.js'], {cwd: ''}, reload);
 	
 });
