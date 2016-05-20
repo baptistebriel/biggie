@@ -33,13 +33,13 @@ body {
 View
 ----- */
 .page-view {
-	.fixed();
-	.size(100%,100%);
+	@include fixed();
+	@include size(100%,100%);
 
 	.page {
-		.fixed();
-		.size(100%,100%);
-		.hidden();
+		@include fixed();
+		@include size(100%,100%);
+		@include hidden();
 		text-align: center;
 		transform: translate3d(0,-100px,0);
 	}
@@ -51,7 +51,7 @@ Utils
 .vertical-center {
 	display: table;
 	position: relative;
-	.size(100%,100%);
+	@include size(100%,100%);
 	
 	.vertical-el {
 		display: table-cell;

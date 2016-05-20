@@ -1,20 +1,24 @@
-// Modules
+// Modules and Partials
+@import "modules/normalize";
+@import "modules/var";
+@import "modules/mixin";
 @import "modules/fonts";
-@import "modules/gradients";
 @import "modules/grid";
 @import "modules/keyframes";
-@import "modules/medias";
-@import "modules/mixin";
-@import "modules/normalize";
-@import "modules/swiper";
-@import "modules/var";
+@import "modules/gradients";
 
-// Partials
 @import "partials/layout";
-@import "partials/preloader";
-@import "partials/misc";
 @import "partials/typography";
+@import "partials/preloader";
 @import "partials/sub";
+@import "partials/misc";
+@import "modules/medias";
+
+@import "modules/swiper";
+
+
+
+
 
 // Third-party
 // @import "vendor/jquery.ui.core";
