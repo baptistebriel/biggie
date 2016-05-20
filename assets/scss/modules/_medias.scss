@@ -1,0 +1,43 @@
+/* -----
+Media Queries
+----- */
+@media (max-width: 768px) {
+	html{
+		font: 80%/1.5 $font;
+	}
+
+	.device-content{
+		width: 90%;
+	}
+	.not-mobile{
+		display: none;
+	}
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+	html{
+		font: 90%/1.5 $font;
+	}
+	
+	.device-content{
+		width: 700px;
+	}
+	.not-mobile{
+		display: none;
+	}
+}
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+	html{
+		font: 95%/1.5 $font;
+	}
+
+	.device-content{
+		width: 960px;
+	}
+}
+
+/* -----
+Retina
+----- */
+@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5){}

@@ -1,0 +1,8 @@
+.sub-item {
+    display: none;
+    @include size(320px,100%);
+    position: fixed; top: 0; right: 0;
+    background: rgba(0,0,0,.1);
+    text-align: center;
+    transform: translate3d(100%,0,0);
+}

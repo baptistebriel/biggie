@@ -1,0 +1,16 @@
+a {
+	color: $black;
+	text-decoration: underline;
+
+	&:hover {
+		color: $base;
+	}
+}
+
+ul {
+	list-style-type: none;
+}
+
+p {
+	font: $14px/$25px $font;
+}

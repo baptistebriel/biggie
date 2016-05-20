@@ -1,0 +1,8 @@
+/* -----
+Preloader
+----- */
+.preloader {
+	@include fixed();
+	text-align: center;
+	background: $white;
+}
