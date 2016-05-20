@@ -1,5 +1,13 @@
 // Modules
-@import "partials/base";
+@import "modules/fonts";
+@import "modules/gradients";
+@import "modules/grid";
+@import "modules/keyframes";
+@import "modules/medias";
+@import "modules/mixin";
+@import "modules/normalize";
+@import "modules/swiper";
+@import "modules/var";
 
 // Partials
 @import "partials/layout";

@@ -1,0 +1,44 @@
+/* -----
+Basic Mixin'
+----- */
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+} /* .size(50px,30px); */
+@mixin center-block(){
+      display: block;
+   margin-left: auto;
+  margin-right: auto;
+} /* @mixin center-block(); */
+@mixin scale-with-grid(){
+     max-width: 100%;
+        height: auto;
+} /* @mixin scale-with-grid(); */
+@mixin absolute(){
+     position: absolute;
+     top: 0; right: 0; bottom: 0; left:0;
+     margin: auto;
+} /* @mixin absolute(); */
+@mixin fixed(){
+     position: fixed;
+     top: 0; right: 0; bottom: 0; left:0;
+     margin: auto;
+} /* @mixin fixed(); */
+@mixin hidden(){
+  opacity: 0;
+  visibility: hidden;
+} /* @mixin hidden(); */
+@mixin visible(){
+  opacity: 1;
+  visibility: visible;
+} /* @mixin visible(); */
+
+/* -----
+Hover
+----- */
+@mixin hover-color($color) {
+  &:hover{color: $color;}
+}
+@mixin hover-bg($color) {
+  &:hover{background-color: $color;}
+}
