@@ -5,7 +5,7 @@ var history = require('connect-history-api-fallback');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
-gulp.task('serve', ['less', 'js'], function() {
+gulp.task('serve', ['sass', 'js'], function() {
 	
 	browserSync({
 		notify: false,
@@ -15,7 +15,7 @@ gulp.task('serve', ['less', 'js'], function() {
 		}
 	});
 	
-	gulp.watch('assets/less/**/*.less', ['less']);
+	gulp.watch('assets/scss/*.scss', ['sass']);
 	gulp.watch('assets/js/**/*.js', ['js']);
 	
 	gulp.watch(['*.html', 'build/*.css', 'build/*.js'], {cwd: ''}, reload);

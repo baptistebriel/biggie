@@ -3,7 +3,7 @@ Media Queries
 ----- */
 @media (max-width: 768px) {
 	html{
-		font: 80%/1.5 @font;
+		font: 80%/1.5 $font;
 	}
 
 	.device-content{
@@ -16,7 +16,7 @@ Media Queries
 
 @media (min-width: 769px) and (max-width: 1024px) {
 	html{
-		font: 90%/1.5 @font;
+		font: 90%/1.5 $font;
 	}
 	
 	.device-content{
@@ -29,7 +29,7 @@ Media Queries
 
 @media (min-width: 1024px) and (max-width: 1280px) {
 	html{
-		font: 95%/1.5 @font;
+		font: 95%/1.5 $font;
 	}
 
 	.device-content{

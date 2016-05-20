@@ -1,9 +1,9 @@
 a {
-	color: @black;
+	color: $black;
 	text-decoration: underline;
 
 	&:hover {
-		color: @base;
+		color: $base;
 	}
 }
 
@@ -12,5 +12,5 @@ ul {
 }
 
 p {
-	font: @14px/@25px @font;
+	font: $px14/$px25 $font;
 }

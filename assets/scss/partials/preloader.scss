@@ -2,7 +2,7 @@
 Preloader
 ----- */
 .preloader {
-	.fixed();
+	@include fixed();
 	text-align: center;
-	background: @white;
+	background: $white;
 }

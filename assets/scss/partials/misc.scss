@@ -2,17 +2,17 @@ footer {
 	position: fixed; bottom: 0; right: 0; left: 0;
 	display: block;
 	text-align: center;
-	.size(100%,50px);
+	@include size(100%,50px);
 	margin-bottom: 1rem;
 	z-index: 3;
 	opacity: 0;
-	transition: opacity .7s @easeOutExpo;
+	transition: opacity .7s $easeOutExpo;
 
 	p {
-		color: @grey-light;
+		color: $grey-light;
 
 		a {
-			color: @grey-dark;
+			color: $grey-dark;
 
 			&:hover {
 				text-decoration: underline;

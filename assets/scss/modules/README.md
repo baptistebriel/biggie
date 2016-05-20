@@ -1,0 +1,3 @@
+This directory - Modules - contains Sass code that doesn't output CSS.
+
+I.e. Functions, variables, mixins,...
