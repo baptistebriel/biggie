@@ -7,7 +7,7 @@ const utils = {
 	
 	css: {
 		
-		getRect(top=0, right, bottom, left=0) {
+		getRect(right, bottom, left=0, top=0) {
 
 			return `rect(${top}px, ${right}px, ${bottom}px, ${left}px)`;
 		}
@@ -49,7 +49,7 @@ const utils = {
 	        const target = e.currentTarget
 
 	        if(classes.has(target, 'no-route')) return
-
+	        
 	        e.preventDefault()
 
 	        framework.go(target.getAttribute('href'))
@@ -65,12 +65,17 @@ const utils = {
 				for (var key in req.params) {
 			        if (req.params.hasOwnProperty(key)) {
 
-			        	route.indexOf(key) > -1 && (route = route.replace(`:${key}`, options.sub ? '' : req.params[key]))
+			        	if(route.indexOf(key) > -1) {
+			        		route = route.replace(`:${key}`, options.sub ? '' : req.params[key])
+			        	}
 			        }
 			    }
 			}
 			
-			route.substring(route.length-1) == '/' && (route = route.slice(0, -1))
+			if(route.substring(route.length-1) == '/') {
+				route = route.slice(0, -1)
+			}
+
 			return route.substr(1)
 		},
 		
