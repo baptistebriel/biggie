@@ -17,7 +17,7 @@
     "dom-classes": "npm-dom/dom-classes",
     "dom-event": "npm-dom/dom-event",
     "dom-select": "npm-dom/dom-select",
-    "gsap": "1.18.0",
+    "gsap": "1.18.3",
     "please-ajax": "^2.0.2",
     "promise": "7.0.4",
     "query-dom-components": "0.0.7"
