@@ -1,11 +1,17 @@
 /* -----
 Media Queries
 ----- */
-@media (max-width: 768px) {
+@mobile:      ~"only screen and (max-width: 768px)";
+@tablet:      ~"only screen and (min-width: 769px) and (max-width: 1024px)";
+@desktop:     ~"only screen and (min-width: 1025px) and (max-width: 1128px)";
+@desktop-xl:  ~"only screen and (min-width: 1129px)";
+@retina:  	  ~"only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5)";
+
+@media @mobile {
 	html{
 		font: 80%/1.5 @font;
 	}
-
+	
 	.device-content{
 		width: 90%;
 	}
@@ -14,7 +20,7 @@ Media Queries
 	}
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
+@media @tablet {
 	html{
 		font: 90%/1.5 @font;
 	}
@@ -27,7 +33,7 @@ Media Queries
 	}
 }
 
-@media (min-width: 1024px) and (max-width: 1280px) {
+@media @desktop {
 	html{
 		font: 95%/1.5 @font;
 	}
@@ -40,4 +46,4 @@ Media Queries
 /* -----
 Retina
 ----- */
-@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5){}
+@media @retina {}
