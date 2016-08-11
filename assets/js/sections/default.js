@@ -19,11 +19,11 @@ class Default {
     
     init(req, done, options) {
 
-        const opts = options || { sub: false }
+        const opts = options || { cache: true, sub: false }
         
         const view = this.view
         const ready = this.dataAdded.bind(this, done)
-        const page = this.page = utils.biggie.loadPage(req, view, ready, opts)
+        const page = this.page = utils.biggie.loadPage(req, view, opts, ready)
     }
 
     dataAdded() {
@@ -31,7 +31,7 @@ class Default {
         this.ui = query({ el: this.page })
         
         this.a = $.all('a', this.page)
-
+        
         utils.biggie.addRoutingEL(this.a)
     }
     
@@ -42,8 +42,10 @@ class Default {
     }
     
     destroy() {
-        
+
         utils.biggie.removeRoutingEL(this.a)
+
+        this.a = null
     }
 }
 

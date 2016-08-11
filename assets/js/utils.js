@@ -1,4 +1,5 @@
 import framework from 'framework'
+import cache from 'cache'
 import ajax from 'please-ajax'
 import create from 'dom-create-element'
 import classes from 'dom-classes'
@@ -80,27 +81,41 @@ const utils = {
 		},
 		
 		createPage(req, slug) {
+
+			const cn = slug.replace('/', '-')
 			
 			return create({
 				selector: 'div',
-				id: `page-${slug}`,
-				styles: `page page-${slug}`
+				id: `page-${cn}`,
+				styles: `page page-${cn}`
 			})
 		},
 		
-		loadPage(req, view, done, options) {
+		loadPage(req, view, options, done) {
 			
 			const slug = utils.biggie.getSlug(req, options)
 			const page = utils.biggie.createPage(req, slug)
-			
-			ajax.get(`/templates/${slug}.html`, {
-				success: (object) => {
-					page.innerHTML = object.data;
-					done();
-				}
-			})
 
-			return view.appendChild(page)
+			view.appendChild(page)
+
+			if(!cache[slug] || !options.cache) {
+
+				ajax.get(`/templates/${slug}.html`, {
+					success: (object) => {
+						const html = object.data
+						page.innerHTML = html
+						options.cache && (cache[slug] = html)
+						done()
+					}
+				})
+
+			} else {
+
+				page.innerHTML = cache[slug]
+				done()
+			}
+
+			return page
 		}
 	}
 }
