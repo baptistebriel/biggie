@@ -104,7 +104,7 @@ const utils = {
 					success: (object) => {
 						const html = object.data
 						page.innerHTML = html
-						options.cache && (cache[slug] = html)
+						if(options.cache) cache[slug] = html
 						done()
 					}
 				})
