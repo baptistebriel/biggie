@@ -43,7 +43,7 @@
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.4",
     "jshint": "^2.9.2",
-    "lodash.assign": "^4.1.0",
+    "lodash.assign": "^4.2.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "vinyl-transform": "^1.0.0",
