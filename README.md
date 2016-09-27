@@ -1,6 +1,7 @@
 # biggie
-Biggie is a JavaScript application boilerplate written in ES6 based on [bigwheel](https://github.com/bigwheel-framework), a minimalist framework from [Jam3](http://www.jam3.com/).
-Be sure to check out the full [documentation](https://github.com/bigwheel-framework/documentation) for bigwheel before you're getting started.
+Biggie is a JavaScript application boilerplate written in ES6 based on [bigwheel](https://github.com/bigwheel-framework), a minimalist framework from [Jam3](http://www.jam3.com/).  
+
+> :exclamation: Be sure to check out the full [documentation](https://github.com/bigwheel-framework/documentation) for bigwheel before you're getting started.
 
 ## Getting Started
 
@@ -186,6 +187,15 @@ Returns either `pageYOffset` or `document.documentElement||document.body.scrollT
 ```js
 const scrollY = utils.js.scrollTop()
 ```
+
+### Gulp
+
+We're using gulp to compile all LESS files to a single CSS file, with prefixed properties using [`autoprefixer`](https://github.com/postcss/autoprefixer).
+
+You can write in ES6 in this project as it uses [`babelify`](https://github.com/babel/babelify), a [`browserify`](https://github.com/substack/node-browserify) transform.  
+Gulp will create `build/app.js` (for development) and `build/app.min.js` with [`uglify`](https://github.com/terinjokes/gulp-uglify) (for production).
+
+Using [`watchify`](https://github.com/substack/watchify) and [`browser-sync`](http://www.browsersync.io), your site will be live-reloaded as soon as there's changes made to the JS and/or CSS files.
 
 ### License
 
