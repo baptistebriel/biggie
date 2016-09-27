@@ -4,38 +4,27 @@ Be sure to check out the full [documentation](https://github.com/bigwheel-framew
 
 ## Getting Started
 
-`git clone https://github.com/baptistebriel/biggie.git folder-name`
+```sh
+git clone https://github.com/baptistebriel/biggie.git
 
-`cd folder-name && npm i && gulp`
+# move into directory
+cd biggie
+
+# install dependencies
+npm i
+
+# start gulp
+gulp
+```
 
 Your site will be at `http://localhost:3000` by default using [browser-sync](http://www.browsersync.io)
 
 ## Gulp tasks
 
 - `less` compilation to `css`
-- browserify + babelify & uglify `js` files
+- [browserify](https://github.com/substack/node-browserify) + [babelify](https://github.com/babel/babelify) & uglify `js` files
   - use `build/app.js` for development, `build/app.min.js` for production
-- watch for `css` and `js` files, livereload with browser-sync
-
-## Todo
-
-- [x] biggie + [wordpress](https://wordpress.org) *(will push to a new branch)*
-- [x] biggie + [cockpit](http://getcockpit.com) *(will push to a new branch)*
-
-### JS utils
-
-Under `/assets/js/utils.js` there's a couple of `utils` functions:
-
-- css
-  - `getRect(top, right, bottom, left)` returns the css rect string with clip values
-- js
-  - `arrayFrom(opt)` returns an array from an argument (usually a `NodeList`)
-  - `clamp(min, value, max)` return a clamped value between min and max values
-  - `scrollTop` return either `pageYOffset` or `document.documentElement||document.body.scrollTop`
-- biggie
-  - `getSlug(req)` return the section slug (i.e. `home`) from bighweel's `req` parameter
-  - `createPage(req, slug)` create an `HTML element` and returns it
-  - `loadPage(req, view, done)` used on all sections's `init` to create the page
+- watch for `css` and `js` files, livereload with [browser-sync](http://www.browsersync.io)
 
 ### Examples
 
