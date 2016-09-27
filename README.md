@@ -19,16 +19,10 @@ gulp
 
 Your site will be at `http://localhost:3000` by default using [browser-sync](http://www.browsersync.io)
 
-## Gulp tasks
-
-- `less` compilation to `css`
-- [browserify](https://github.com/substack/node-browserify) + [babelify](https://github.com/babel/babelify) & uglify `js` files
-  - use `build/app.js` for development, `build/app.min.js` for production
-- watch for `css` and `js` files, livereload with [browser-sync](http://www.browsersync.io)
-
 ### Examples
 
 - [oursroux.com](http://oursroux.com)
+- [buildinamsterdam.com](http://buildinamsterdam.com)
 - [flavinsky.com](http://flavinsky.com)
 - [pierrelevaillant.me](http://pierrelevaillant.me)
 - [alisharaf.com](http://alisharaf.com)
