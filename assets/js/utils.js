@@ -46,55 +46,21 @@ const utils = {
 		},
 
 		handleRoute(e) {
-        	
-	        const target = e.currentTarget
 
-	        if(classes.has(target, 'no-route')) return
-	        
-	        e.preventDefault()
+			const target = e.currentTarget
 
-	        framework.go(target.getAttribute('href'))
-	    },
+			if(classes.has(target, 'no-route') || (target.hasAttribute('target') && target.getAttribute('target') == '_blank')) return
 
-		getSlug(req, options) {
-			
-			let route = req.route === "/" ? '/home' : req.route;
-			const params = Object.keys(req.params).length === 0 && JSON.stringify(req.params) === JSON.stringify({})
-			
-			if(!params) {
-				
-				for (var key in req.params) {
-			        if (req.params.hasOwnProperty(key)) {
+			e.preventDefault()
 
-			        	if(route.indexOf(key) > -1) {
-			        		route = route.replace(`:${key}`, options.sub ? '' : req.params[key])
-			        	}
-			        }
-			    }
-			}
-			
-			if(route.substring(route.length-1) == '/') {
-				route = route.slice(0, -1)
-			}
-
-			return route.substr(1)
-		},
-		
-		createPage(req, slug) {
-
-			const cn = slug.replace('/', '-')
-			
-			return create({
-				selector: 'div',
-				id: `page-${cn}`,
-				styles: `page page-${cn}`
-			})
+			framework.go(target.getAttribute('href'))
 		},
 		
 		loadPage(req, view, options, done) {
 			
-			const slug = utils.biggie.getSlug(req, options)
-			const page = utils.biggie.createPage(req, slug)
+			const slug = getSlug(req, options)
+			const cn = slug.replace('/', '-')
+			const page = create({ selector: 'div', id: `page-${cn}`, styles: `page page-${cn}` })
 
 			view.appendChild(page)
 
@@ -110,14 +76,40 @@ const utils = {
 				})
 
 			} else {
-
-				page.innerHTML = cache[slug]
-				done()
+				
+				setTimeout(() => {
+					page.innerHTML = cache[slug]
+					done()
+				}, 1)
 			}
 
 			return page
 		}
 	}
+}
+
+const getSlug = (req, options) => {
+	
+	const params = Object.keys(req.params).length === 0 && JSON.stringify(req.params) === JSON.stringify({})
+	let route = req.route === "/" ? '/home' : req.route;
+	
+	if(!params) {
+		
+		for (var key in req.params) {
+	        if (req.params.hasOwnProperty(key)) {
+
+	        	if(route.indexOf(key) > -1) {
+	        		route = route.replace(`:${key}`, options.sub ? '' : req.params[key])
+	        	}
+	        }
+	    }
+	}
+	
+	if(route.substring(route.length-1) == '/') {
+		route = route.slice(0, -1)
+	}
+
+	return route.substr(1)
 }
 
 export default utils
