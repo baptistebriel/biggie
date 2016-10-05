@@ -65,6 +65,7 @@ ajax.get(`${config.BASE}templates/${slug}.html`, {
 #### biggie in a sub-folder
 
 If you want to use biggie in a subfolder of your website instead of root, edit `config.BASE` in `assets/js/config.js` so it will set the routes and get the templates using this prefix.  
+
 Default for `config.BASE` is `/`, but if your website is under `website.com/biggie` for example, set it to `/biggie/`
 
 #### WordPress
