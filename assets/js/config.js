@@ -2,7 +2,6 @@ import domselect from 'dom-select'
 
 const config = {
 	
-	PATH: '',
 	BASE: '/',
 	
 	$body: document.body,

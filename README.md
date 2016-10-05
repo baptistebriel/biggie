@@ -52,7 +52,7 @@ i.e. with a route as `http://localhost:3000/home`, it will load `/templates/home
 > `assets/js/utils.js`
 
 ```js
-ajax.get(`/templates/${slug}.html`, {
+ajax.get(`${config.BASE}templates/${slug}.html`, {
   success: (object) => {
     const html = object.data
     page.innerHTML = html
@@ -62,6 +62,11 @@ ajax.get(`/templates/${slug}.html`, {
 })
 ```
 
+#### biggie in a sub-folder
+
+If you want to use biggie in a subfolder of your website instead of root, edit `config.BASE` in `assets/js/config.js` so it will set the routes and get the templates using this prefix.  
+Default for `config.BASE` is `/`, but if your website is under `website.com/biggie` for example, set it to `/biggie/`
+
 #### WordPress
 
 If you're using WordPress for example, it would look like this:
@@ -69,7 +74,7 @@ If you're using WordPress for example, it would look like this:
 > `assets/js/utils.js`
 
 ```js
-ajax.get(`/${slug}`, {
+ajax.get(`${config.BASE}${slug}`, {
   success: (object) => {
     const html = object.data.split(/(<body>|<\/body>)/ig)[2]
     page.innerHTML = html
@@ -104,7 +109,7 @@ Another thing you could possibly do is use a single `.json` file for all your da
 ```js
 init(req, done) {
   classes.add(config.$body, 'is-loading')
-  ajax.get(`/data/data.json`, {
+  ajax.get(`${config.BASE}data/data.json`, {
     success: (object) => {
       window._data = object.data
       done()
@@ -116,7 +121,7 @@ init(req, done) {
 > `assets/js/utils.js`
 
 ```js
-ajax.get(`/templates/${slug}.mst`, {
+ajax.get(`${config.BASE}templates/${slug}.mst`, {
   success: (object) => {
     const rendered = Mustache.render(object.data, window._data)
     page.innerHTML = rendered
