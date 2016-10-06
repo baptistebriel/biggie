@@ -266,7 +266,7 @@ div.style.clip = rect
 
 > JS
 
-##### array
+#### array
 
 - `from(opt)`
 
@@ -319,7 +319,7 @@ const max = utils.js.array.max([10, 50, 30])
 // 50
 ```
 
-##### math
+#### math
 
 - `clamp(min, value, max)`
 
@@ -332,7 +332,7 @@ const value = e.deltaY
 const clamped = utils.js.math.clamp(0, value, 200)
 ```
 
-##### func
+#### func
 
 - `once(fn)`
 
@@ -353,7 +353,7 @@ Better setInterval using requestAnimationFrame.
 utils.js.func.interval(() => console.log('tick!'), 300)
 ```
 
-##### dom
+#### dom
 
 - `each`
 

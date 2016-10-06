@@ -16,7 +16,7 @@ const utils = {
 	},
 	
 	js: {
-
+		
 		array: {
 
             from(opt) {
@@ -108,10 +108,10 @@ const utils = {
 		},
 
 		removeRoutingEL(a) {
-			
+
 			utils.js.array.from(a).forEach((el) => el.onclick = null)
 		},
-		
+
 		handleRoute(e) {
 
 			const target = e.currentTarget
