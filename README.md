@@ -149,13 +149,115 @@ animateIn(req, done) {
 }
 ```
 
+### Sections
+
+This is an example of a section, extending Default:
+
+```js
+import config from 'config'
+import utils from 'utils'
+import event from 'dom-event'
+import Default from './default'
+
+class Section extends Default {
+  
+  constructor(opt) {
+    
+    // always call super()
+    // otherwise Default's code will not run
+    super(opt)
+    
+    // the slug is simply used to add classes to the body, for styling purposes
+    this.slug = 'section'
+
+    // custom functions of this section that needs to bind 'this'
+    this.onClick = this.onClick.bind(this)
+  }
+  
+  init(req, done) {
+    
+    super.init(req, done)
+  }
+  
+  dataAdded(done) {
+
+    super.dataAdded()
+
+    // now that the dom of your page is ready, you can now add event listeners, initialise components, etc.
+    // this.addEvents()
+    
+    // always call done() at the end of dataAdded
+    done()
+  }
+
+  addEvents() {
+
+    event.on(this.page, 'click', this.onClick)
+  }
+
+  removeEvents() {
+
+    event.off(this.page, 'click', this.onClick)
+  }
+  
+  onClick(e) {
+
+    console.log(e, this)
+  }
+
+  animateIn(req, done) {
+
+    // 'req' contains the previous route
+    
+    classes.add(config.$body, `is-${this.slug}`)
+
+    TweenLite.to(this.page, 1, {
+      y: 0, 
+      autoAlpha: 1,
+      ease: Expo.easeInOut,
+      onComplete: done
+    })
+  }
+
+  animateOut(req, done) {
+    
+    // 'req' contains the next route
+    
+    classes.remove(config.$body, `is-${this.slug}`)
+    
+    TweenLite.to(this.page, 0.7, {
+      y: 100,
+      autoAlpha: 0,
+      ease: Expo.easeInOut,
+      clearProps: 'all',
+      onComplete: done
+    })
+  }
+
+  destroy(req, done) {
+    
+    super.destroy()
+    
+    // cleanup all event listeners, destroy components, etc...
+    // this.removeEvents()
+
+    // when you're done, don't forget to remove the page from the dom
+    this.page.parentNode.removeChild(this.page)
+    
+    done()
+  }
+}
+
+module.exports = Section
+```
+
 ### Utils
 
 > CSS
 
 - `getRect(top, right, bottom, left)`
 
-Returns the CSS rect string with clip values
+Returns the CSS rect string with clip values.
 
 ```js
 const rect = utils.css.getRect(0, 300, 10, 0)
@@ -164,34 +266,122 @@ div.style.clip = rect
 
 > JS
 
-- `arrayFrom(opt)`
+##### array
 
-Returns a new Array from an argument (usually a `NodeList`)
+- `from(opt)`
+
+Returns a new Array from an argument. (usually a `NodeList`)
 
 ```js
 const els = document.querySelectorAll('.el')
-const arr = utils.js.arrayFrom(els)
+const arr = utils.js.array.from(els)
 
 // arr.forEach(...)
 ```
 
+- `combine(...arrays)`
+
+Combine multiple arrays into one array.
+
+```js
+const combine = utils.js.array.combine(["foo"], ["bar", "baz"], [1, 2])
+
+// ["foo", "bar", "baz", 1, 2]
+```
+
+- `without(arr, ...values)`
+
+Returns a copy of the array with all instances of the values removed.
+
+```js
+const without = utils.js.array.without([1, 2, 1, 0, 3, 1, 4], 0, 1)
+
+// [2, 3, 4]
+```
+
+- `min(arr)`
+
+Returns the minimum value in the array.
+
+```js
+const min = utils.js.array.min([10, 50, 30])
+
+// 10
+```
+
+- `max(arr)`
+
+Returns the maximum value in the array.
+
+```js
+const max = utils.js.array.max([10, 50, 30])
+
+// 50
+```
+
+##### math
+
 - `clamp(min, value, max)`
 
-Returns a clamped value between min and max values
+Returns a clamped value between min and max values.
 
 ```js
 const min = 0
 const max = 200
 const value = e.deltaY
-const clamped = utils.js.clamp(0, value, 200)
+const clamped = utils.js.math.clamp(0, value, 200)
+```
+
+##### func
+
+- `once(fn)`
+
+Returns a new function that won't execute more than once.
+
+```js
+const yo = () => console.log('Yo');
+const sayYo = utils.js.func.once(yo);
+sayYo(); // 'Yo'
+sayYo(); // Doesn't execute
+```
+
+- `interval(callback, delay)`
+
+Better setInterval using requestAnimationFrame.
+
+```js
+utils.js.func.interval(() => console.log('tick!'), 300)
+```
+
+##### dom
+
+- `each`
+
+Iterate over a NodeList.
+
+```js
+const divs = document.querySelectorAll('div')
+utils.js.dom.each(divs, (e) => {
+  console.log(e.index, e.el)
+})
+
+// or, using ES6
+// Spread operator
+[...divs].forEach(callback)
+
+// Array.from()
+Array.from(divs).forEach(callback)
+
+// for...of statement
+for (var div of divs) callback(div)
 ```
 
 - `scrollTop`
 
-Returns either `pageYOffset` or `document.documentElement||document.body.scrollTop`, based on your browser
+Returns either `pageYOffset` or `document.documentElement||document.body.scrollTop`, based on your browser.
 
 ```js
-const scrollY = utils.js.scrollTop()
+const scrollY = utils.js.dom.scrollTop()
 ```
 
 ### Gulp

@@ -6,9 +6,9 @@ import create from 'dom-create-element'
 import classes from 'dom-classes'
 
 const utils = {
-	
+
 	css: {
-		
+
 		getRect(right, bottom, left=0, top=0) {
 
 			return `rect(${top}px, ${right}px, ${bottom}px, ${left}px)`;
@@ -16,36 +16,102 @@ const utils = {
 	},
 	
 	js: {
-		
-		arrayFrom(opt) {
-			
-			return Array.prototype.slice.call(opt, 0);
-		},
 
-		clamp(min, value, max) {
+		array: {
 
-			return Math.max(min, Math.min(value, max));
-		},
-		
-		scrollTop() {
+            from(opt) {
 
-			if (window.pageYOffset) return window.pageYOffset;
-			return document.documentElement.clientHeight ? document.documentElement.scrollTop : document.body.scrollTop;
-		}
+                return Array.prototype.slice.call(opt, 0)
+            },
+
+            combine(...arrays) {
+
+                return [].concat(...arrays)
+            },
+
+            without(arr, ...values) {
+
+                return arr.filter(el => !values.some(exclude => el === exclude))
+            },
+
+            min(arr) {
+                
+                return Math.min(...arr)
+            },
+
+            max(arr) {
+                
+                return Math.max(...arr)
+            }
+        },
+
+        math: {
+
+            clamp(min, value, max) {
+
+                return Math.max(min, Math.min(value, max))
+            }
+        },
+
+        func: {
+
+            once(fn) {
+
+                let done = false
+
+                return (...args) => {
+                    if (done) return
+                    done = true
+                    fn(...args)
+                }
+            },
+
+            interval(callback, delay) {
+
+                const tick = now => {
+                    if (now - start >= delay) {
+                        start = now
+                        callback()
+                    }
+                    requestAnimationFrame(tick)
+                }
+
+                let start = performance.now()
+                requestAnimationFrame(tick)
+            }
+        },
+
+        dom: {
+
+            each(nodelist, callback) {
+                
+                let i = -1
+                const l = nodelist.length
+
+                while (++i < l)
+                    callback({ el: nodelist.item(i), index: i })
+            },
+
+            scrollTop() {
+
+                if (window.pageYOffset) return window.pageYOffset
+                return document.documentElement.clientHeight ? document.documentElement.scrollTop : document.body.scrollTop
+            }
+        }
 	},
 	
 	biggie: {
 		
 		addRoutingEL(a) {
 
-			utils.js.arrayFrom(a).forEach((el) => el.onclick = utils.biggie.handleRoute)
+			utils.js.array.from(a).forEach((el) => el.onclick = utils.biggie.handleRoute)
 		},
 
 		removeRoutingEL(a) {
-
-			utils.js.arrayFrom(a).forEach((el) => el.onclick = null)
+			
+			utils.js.array.from(a).forEach((el) => el.onclick = null)
 		},
-
+		
 		handleRoute(e) {
 
 			const target = e.currentTarget
@@ -60,7 +126,7 @@ const utils = {
 		getSlug(req, options) {
 
 			const params = Object.keys(req.params).length === 0 && JSON.stringify(req.params) === JSON.stringify({})
-			let route = req.route === "/" ? '/home' : req.route;
+			let route = req.route === "/" ? '/home' : req.route
 			
 			if(!params) {
 				

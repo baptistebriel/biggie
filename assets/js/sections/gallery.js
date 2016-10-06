@@ -1,8 +1,7 @@
 import config from 'config'
 import utils from 'utils'
-import gsap from 'gsap';
-import classes from 'dom-classes';
-import Default from './default';
+import classes from 'dom-classes'
+import Default from './default'
 
 class Gallery extends Default {
     

@@ -1,8 +1,7 @@
 import config from 'config'
 import utils from 'utils'
-import gsap from 'gsap';
-import classes from 'dom-classes';
-import Default from './default';
+import classes from 'dom-classes'
+import Default from './default'
 
 class Section extends Default {
 	
@@ -11,7 +10,6 @@ class Section extends Default {
 		super(opt)
 
 		this.slug = 'section'
-
 	}
 	
 	init(req, done) {
@@ -35,7 +33,7 @@ class Section extends Default {
 			autoAlpha: 1,
 			ease: Expo.easeInOut,
 			onComplete: done
-		});
+		})
 	}
 
 	animateOut(req, done) {
