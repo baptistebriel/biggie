@@ -7,13 +7,13 @@ import classes from 'dom-classes'
 
 const utils = {
 
-	css: {
+    css: {
 
-		getRect(right, bottom, left=0, top=0) {
+        getRect(right, bottom, left=0, top=0) {
 
-			return `rect(${top}px, ${right}px, ${bottom}px, ${left}px)`;
-		}
-	},
+            return `rect(${top}px, ${right}px, ${bottom}px, ${left}px)`;
+        }
+    },
 	
     js: {
 		
@@ -98,84 +98,84 @@ const utils = {
                 return document.documentElement.clientHeight ? document.documentElement.scrollTop : document.body.scrollTop
             }
         }
-	},
+    },
 	
 	biggie: {
 		
-		addRoutingEL(a) {
+        addRoutingEL(a) {
 
-			utils.js.array.from(a).forEach((el) => el.onclick = utils.biggie.handleRoute)
-		},
+            utils.js.array.from(a).forEach((el) => el.onclick = utils.biggie.handleRoute)
+        },
 
-		removeRoutingEL(a) {
+        removeRoutingEL(a) {
 
-			utils.js.array.from(a).forEach((el) => el.onclick = null)
-		},
+            utils.js.array.from(a).forEach((el) => el.onclick = null)
+        },
 
-		handleRoute(e) {
+        handleRoute(e) {
 
-			const target = e.currentTarget
+            const target = e.currentTarget
 
-			if(classes.has(target, 'no-route') || (target.hasAttribute('target') && target.getAttribute('target') == '_blank')) return
+            if(classes.has(target, 'no-route') || (target.hasAttribute('target') && target.getAttribute('target') == '_blank')) return
 
-			e.preventDefault()
+            e.preventDefault()
 
-			framework.go(target.getAttribute('href'))
-		},
+            framework.go(target.getAttribute('href'))
+        },
 
-		getSlug(req, options) {
+        getSlug(req, options) {
 
-			const params = Object.keys(req.params).length === 0 && JSON.stringify(req.params) === JSON.stringify({})
-			let route = req.route === "/" ? '/home' : req.route
-			
-			if(!params) {
-				
-				for (var key in req.params) {
-			        if (req.params.hasOwnProperty(key)) {
+            const params = Object.keys(req.params).length === 0 && JSON.stringify(req.params) === JSON.stringify({})
+            let route = req.route === "/" ? '/home' : req.route
 
-			        	if(route.indexOf(key) > -1) {
-			        		route = route.replace(`:${key}`, options.sub ? '' : req.params[key])
-			        	}
-			        }
-			    }
-			}
-			
-			if(route.substring(route.length-1) == '/') {
-				route = route.slice(0, -1)
-			}
+            if(!params) {
+            	
+            	for (var key in req.params) {
+                    if (req.params.hasOwnProperty(key)) {
 
-			return route.substr(1)
-		},
-		
-		loadPage(req, view, options, done) {
-			
-			const slug = utils.biggie.getSlug(req, options)
-			const cn = slug.replace('/', '-')
-			const page = create({ selector: 'div', id: `page-${cn}`, styles: `page page-${cn}` })
+                    	if(route.indexOf(key) > -1) {
+                    		route = route.replace(`:${key}`, options.sub ? '' : req.params[key])
+                    	}
+                    }
+                }
+            }
 
-			view.appendChild(page)
-			
-			if(!cache[slug] || !options.cache) {
-				
-				ajax.get(`${config.BASE}templates/${slug}.html`, {
-					success: (object) => {
-						const html = object.data
-						page.innerHTML = html
-						if(options.cache) cache[slug] = html
-						done()
-					}
-				})
+            if(route.substring(route.length-1) == '/') {
+            	route = route.slice(0, -1)
+            }
+            
+            return route.substr(1)
+        },
 
-			} else {
-				
-				setTimeout(() => {
-					page.innerHTML = cache[slug]
-					done()
-				}, 1)
-			}
+        loadPage(req, view, options, done) {
 
-			return page
-		}
+            const slug = utils.biggie.getSlug(req, options)
+            const cn = slug.replace('/', '-')
+            const page = create({ selector: 'div', id: `page-${cn}`, styles: `page page-${cn}` })
+
+            view.appendChild(page)
+
+            if(!cache[slug] || !options.cache) {
+            	
+            	ajax.get(`${config.BASE}templates/${slug}.html`, {
+            		success: (object) => {
+            			const html = object.data
+            			page.innerHTML = html
+            			if(options.cache) cache[slug] = html
+            			done()
+            		}
+            	})
+
+            } else {
+            	
+            	setTimeout(() => {
+            		page.innerHTML = cache[slug]
+            		done()
+            	}, 1)
+            }
+
+            return page
+        }
 	}
 }
 
