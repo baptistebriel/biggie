@@ -143,7 +143,7 @@ const utils = {
             if(route.substring(route.length-1) == '/') {
             	route = route.slice(0, -1)
             }
-            
+
             return route.substr(1)
         },
 
@@ -176,7 +176,7 @@ const utils = {
 
             return page
         }
-	}
+    }
 }
 
 export default utils
