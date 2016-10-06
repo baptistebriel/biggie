@@ -15,9 +15,9 @@ const utils = {
 		}
 	},
 	
-	js: {
+    js: {
 		
-		array: {
+        array: {
 
             from(opt) {
 
@@ -35,12 +35,12 @@ const utils = {
             },
 
             min(arr) {
-                
+
                 return Math.min(...arr)
             },
 
             max(arr) {
-                
+
                 return Math.max(...arr)
             }
         },
