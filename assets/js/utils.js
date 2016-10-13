@@ -126,8 +126,8 @@ const utils = {
         getSlug(req, options) {
 
             const params = Object.keys(req.params).length === 0 && JSON.stringify(req.params) === JSON.stringify({})
-            let route = req.route === "/" ? '/home' : req.route
-
+            let route = req.route === config.BASE ? '/home' : req.route
+            
             if(!params) {
             	
             	for (var key in req.params) {
