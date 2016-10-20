@@ -70,18 +70,44 @@ Default for `config.BASE` is `/`, but if your website is under `website.com/bigg
 
 #### WordPress
 
-If you're using WordPress for example, it would look like this:
+If you're using WordPress for example, the `loadPage` function would look like this:
 
 > `assets/js/utils.js`
 
 ```js
-ajax.get(`${config.BASE}${slug}`, {
-  success: (object) => {
-    const html = object.data.split(/(<body>|<\/body>)/ig)[2]
-    page.innerHTML = html
-    done()
+const slug = utils.biggie.getSlug(req, options)
+const cn = slug.replace('/', '-')
+const page = req.previous ? create({ selector: 'div', id: `page-${cn}`, styles: `page page-${cn}` }) : config.$body.querySelector('.page')
+
+if(req.previous) {
+
+  view.appendChild(page)
+
+  if(!cache[slug] || !options.cache) {
+
+    ajax.get(`${config.BASE}${slug}`, {
+      success: (object) => {
+        const html = object.data.split(/(<body>|<\/body>)/ig)[2]
+        page.innerHTML = html
+        if(options.cache) cache[slug] = html
+        done()
+      }
+    })
+            
+  } else {
+      	
+    setTimeout(() => {
+      page.innerHTML = cache[slug]
+      done()
+    }, 1)
   }
-})
+  
+} else {
+
+  setTimeout(done, 1)
+}
+
+return page
 ```
 
 > :exclamation: Be sure that your permalinks are set to use the custom structure: all your WordPress urls needs to look like `/home`, `/work/name` etc. It will not work using post id.
