@@ -339,18 +339,19 @@ const clamped = utils.js.math.clamp(0, value, 200)
 Returns a new function that won't execute more than once.
 
 ```js
-const yo = () => console.log('Yo');
-const sayYo = utils.js.func.once(yo);
+const yo = () => console.log('Yo')
+const sayYo = utils.js.func.once(yo)
 sayYo(); // 'Yo'
 sayYo(); // Doesn't execute
 ```
 
-- `interval(callback, delay)`
+- `interval(callback, options)`
 
 Better setInterval using requestAnimationFrame.
 
 ```js
-utils.js.func.interval(() => console.log('tick!'), 300)
+const options = { delay: 500, duration: 1500 }
+utils.js.func.interval(() => console.log('tick!'), options) // will run 3 times
 ```
 
 #### dom

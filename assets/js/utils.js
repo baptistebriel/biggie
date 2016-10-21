@@ -66,18 +66,26 @@ const utils = {
                 }
             },
 
-            interval(callback, delay) {
+            interval(callback, opts = { delay: 500, duration: 1500 }) {
 
+                let rAF, start, loop
+                
                 const tick = now => {
-                    if (now - start >= delay) {
-                        start = now
+
+                    if (now - loop >= opts.delay) {
+                        loop = now
                         callback()
                     }
-                    requestAnimationFrame(tick)
-                }
 
-                let start = performance.now()
-                requestAnimationFrame(tick)
+                    if (now - start < opts.duration) {
+                        rAF = requestAnimationFrame(tick)
+                    } else {
+                        cancelAnimationFrame(rAF)
+                    }
+                }
+                
+                start = loop = performance.now()
+                rAF = requestAnimationFrame(tick)
             }
         },
 
