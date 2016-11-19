@@ -5,13 +5,10 @@ const config = {
 	BASE: '/',
 	
 	$body: document.body,
-	$view: domselect('#js-view'),
+	$view: domselect('main'),
 
 	width: window.innerWidth,
-	height: window.innerHeight,
-
-	isMobile: false
-	
+	height: window.innerHeight
 }
 
 export default config

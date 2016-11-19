@@ -1,9 +1,9 @@
-@import "require/_normalize.less";
-@import "require/_var.less";
-@import "require/_mixin.less";
-@import "require/_fonts.less";
-@import "require/_grid.less";
-@import "require/_keyframes.less";
+@import "import/_normalize.less";
+@import "import/_var.less";
+@import "import/_mixin.less";
+@import "import/_fonts.less";
+@import "import/_grid.less";
+@import "import/_keyframes.less";
 
 * {
 	margin: 0;
@@ -44,7 +44,7 @@ Typography
 /* -----
 View
 ----- */
-.page-view {
+main {
 	.fixed();
 	.size(100%,100%);
 
@@ -53,40 +53,70 @@ View
 		.size(100%,100%);
 		.hidden();
 		text-align: center;
-		transform: translate3d(0,-100px,0);
 	}
 }
 
 /* -----
 Utils
 ----- */
-.vertical-center {
+.vertical-align {
 	display: table;
 	position: relative;
 	.size(100%,100%);
 	
-	.vertical-el {
+	&__item {
 		display: table-cell;
 		vertical-align: middle
 	}
 }
 
 /* -----
+Footer
+----- */
+footer {
+	position: fixed; bottom: 0; right: 0; left: 0;
+	display: block;
+	text-align: center;
+	.size(100%,50px);
+	margin-bottom: 1rem;
+	z-index: 3;
+	opacity: 0;
+	transition: opacity .7s @easeOutExpo;
+
+	p {
+		color: @grey-light;
+
+		a {
+			color: @grey-dark;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+/* -----
 Preloader
 ----- */
-@import "import/_preloader.less";
+@import "pages/_preloader.less";
+
+/* -----
+Home
+----- */
+@import "pages/_home.less";
+
+/* -----
+About
+----- */
+@import "pages/_about.less";
 
 /* -----
 Sub Views
 ----- */
-@import "import/_sub.less";
-
-/* -----
-Misc
------ */
-@import "import/_misc.less";
+@import "pages/_sub.less";
 
 /* -----
 Medias Queries
 ----- */
-@import "require/_medias.less";
+@import "import/_medias.less";

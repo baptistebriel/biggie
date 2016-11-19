@@ -12,8 +12,6 @@ class Preloader {
 		this.preloaded = onComplete
 		this.view = config.$view
 		this.el = null
-
-		this.isMobile = config.isMobile = config.width <= 1024 ? true : false
 	}
 	
 	init(req, done) {
@@ -32,7 +30,13 @@ class Preloader {
 		this.el = create({
 			selector: 'div',
 			styles: 'preloader',
-			html: '<div class="vertical-center"><div class="vertical-el"><p>Preloader</p></div></div>'
+			html: `
+				<div class="vertical-center">
+					<div class="vertical-el">
+						<p>Preloader</p>
+					</div>
+				</div>
+			`
 		})
 
 		this.view.insertBefore(this.el, page)
@@ -50,7 +54,7 @@ class Preloader {
 			done()
 			// call this.preloaded to bring the first route
 			this.preloaded()
-		}});
+		}})
 		tl.to(this.el, 1, {autoAlpha: 1})
 		tl.restart()
 	}

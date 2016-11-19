@@ -9,9 +9,7 @@ import query from 'query-dom-components'
 class Default {
     
     constructor(opt = {}) {
-        
-        this.isMobile = config.isMobile
-        
+          
         this.view = config.$view
         this.page = null
         this.a = null
