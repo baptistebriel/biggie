@@ -31,8 +31,8 @@ class Preloader {
 			selector: 'div',
 			styles: 'preloader',
 			html: `
-				<div class="vertical-center">
-					<div class="vertical-el">
+				<div class="vertical-align">
+					<div class="vertical-align__item">
 						<p>Preloader</p>
 					</div>
 				</div>
