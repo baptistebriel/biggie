@@ -26,7 +26,7 @@ class About extends Default {
 
 	animateIn(req, done) {
 
-		classes.add(config.$body, `is-${this.slug}`)
+		classes.add(config.body, `is-${this.slug}`)
 
 		TweenLite.to(this.page, 1, {
 			autoAlpha: 1,
@@ -37,7 +37,7 @@ class About extends Default {
 
 	animateOut(req, done) {
 
-		classes.remove(config.$body, `is-${this.slug}`)
+		classes.remove(config.body, `is-${this.slug}`)
 
 		TweenLite.to(this.page, 0.7, {
 			autoAlpha: 0,

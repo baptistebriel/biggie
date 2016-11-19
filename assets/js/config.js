@@ -4,11 +4,13 @@ const config = {
 	
 	BASE: '/',
 	
-	$body: document.body,
-	$view: domselect('main'),
+	body: document.body,
+	view: domselect('main'),
 
 	width: window.innerWidth,
-	height: window.innerHeight
+	height: window.innerHeight,
+    
+    infos: null
 }
 
 export default config

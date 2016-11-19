@@ -1,4 +1,5 @@
 import config from 'config'
+import sniffer from 'sniffer'
 import classes from 'dom-classes'
 import create from 'dom-create-element'
 import gsap from 'gsap'
@@ -10,14 +11,16 @@ class Preloader {
 	constructor(onComplete) {
 		
 		this.preloaded = onComplete
-		this.view = config.$view
+		this.view = config.view
 		this.el = null
 	}
 	
 	init(req, done) {
 
-		classes.add(config.$body, 'is-loading')
-        	
+		classes.add(config.body, 'is-loading')
+
+		config.infos = sniffer.getInfos()
+        
 		this.createDOM()
 
 		done()
@@ -26,7 +29,7 @@ class Preloader {
 	createDOM() {
 		
 		const page = this.view.firstChild
-
+		
 		this.el = create({
 			selector: 'div',
 			styles: 'preloader',
@@ -68,8 +71,8 @@ class Preloader {
 
 	destroy(req, done) {
 
-		classes.add(config.$body, 'is-loaded')
-		classes.remove(config.$body, 'is-loading')
+		classes.add(config.body, 'is-loaded')
+		classes.remove(config.body, 'is-loading')
 
 		this.view.removeChild(this.el)
 

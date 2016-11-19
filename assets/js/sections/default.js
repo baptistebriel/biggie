@@ -10,7 +10,7 @@ class Default {
     
     constructor(opt = {}) {
           
-        this.view = config.$view
+        this.view = config.view
         this.page = null
         this.a = null
     }

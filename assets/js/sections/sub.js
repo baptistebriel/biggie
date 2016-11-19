@@ -10,9 +10,7 @@ class Sub {
     
     constructor(opt = {}) {
         
-        this.isMobile = config.isMobile
-        
-        this.view = config.$view
+        this.view = config.view
         this.slug = null
         this.el = null
         this.a = null
@@ -20,13 +18,13 @@ class Sub {
     
     init(req, done) {
            
-        const id = req.params.id;
+        const id = req.params.id
         const view = this.view
         const slug = this.slug = `sub-${id}`
         
         const template = `
-            <div class="vertical-center">
-                <div class="vertical-el">
+            <div class="vertical-align">
+                <div class="vertical-align__item">
                     <span>Gallery ${id}</span>
                 </div>
             </div>
@@ -45,7 +43,7 @@ class Sub {
     
     animateIn(req, done) {
 
-        classes.add(config.$body, `is-${this.slug}`)
+        classes.add(config.body, `is-${this.slug}`)
 
         this.el.style.display = 'block'
 
@@ -58,7 +56,7 @@ class Sub {
 
     animateOut(req, done) {
          
-        classes.remove(config.$body, `is-${this.slug}`)
+        classes.remove(config.body, `is-${this.slug}`)
 
         const tl = new TimelineMax({ paused: true, onComplete: done })
         this.el && tl.to(this.el, 0.7, { x: '100%', ease: Expo.easeInOut, clearProps: 'all' })
@@ -68,7 +66,7 @@ class Sub {
     resize(width, height) {}
 
     destroy(req, done) {
-
+        
         this.el.parentNode.removeChild(this.el)
         this.el = null
         
