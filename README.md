@@ -27,6 +27,7 @@ Your site will be at `http://localhost:3000` by default using [browser-sync](htt
 - [flavinsky.com](http://flavinsky.com)
 - [pierrelevaillant.me](http://pierrelevaillant.me)
 - [alisharaf.com](http://alisharaf.com)
+- [margauxgayet.com](http://margauxgayet.com)
 - [bbriel.me](http://bbriel.me)
 - [bigwheel-framework/built-with-bigwheel](https://github.com/bigwheel-framework/built-with-bigwheel)
 - & more to come!
