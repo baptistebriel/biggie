@@ -1,10 +1,11 @@
 import framework from 'framework'
 import config from 'config'
 import utils from 'utils'
-import $ from 'dom-select'
+import domselect from 'dom-select'
 import event from 'dom-event'
 import classes from 'dom-classes'
 import query from 'query-dom-components'
+import biggie from '@utils/biggie'
 
 class Default {
     
@@ -20,17 +21,17 @@ class Default {
         const opts = options || { cache: true, sub: false }
         
         const view = this.view
-        const ready = this.dataAdded.bind(this, done)
-        const page = this.page = utils.biggie.loadPage(req, view, opts, ready)
+        const ready = this.ready.bind(this, done)
+        const page = this.page = biggie.page(req, view, opts, ready)
     }
 
-    dataAdded() {
+    ready() {
 
         this.ui = query({ el: this.page })
         
-        this.a = $.all('a', this.page)
+        this.a = domselect.all('a', this.page)
         
-        utils.biggie.addRoutingEL(this.a)
+        biggie.bind.add(this.a)
     }
     
     resize(width, height) {
@@ -41,7 +42,7 @@ class Default {
     
     destroy() {
 
-        utils.biggie.removeRoutingEL(this.a)
+        biggie.bind.remove(this.a)
 
         this.a = null
     }

@@ -17,9 +17,9 @@ class Section extends Default {
 		super.init(req, done)
 	}
 	
-	dataAdded(done) {
+	ready(done) {
 
-		super.dataAdded()
+		super.ready()
 		
 		done()
 	}

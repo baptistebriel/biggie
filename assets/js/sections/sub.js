@@ -1,7 +1,5 @@
 import framework from 'framework'
 import config from 'config'
-import utils from 'utils'
-import $ from 'dom-select'
 import classes from 'dom-classes';
 import create from 'dom-create-element'
 import query from 'query-dom-components'
@@ -13,6 +11,7 @@ class Sub {
         this.view = config.view
         this.slug = null
         this.el = null
+        this.ui = null
         this.a = null
     }
     
@@ -37,6 +36,8 @@ class Sub {
         })
 
         this.view.appendChild(this.el)
+
+        this.ui = query({ el: this.el })
         
         done()
     }
@@ -44,7 +45,7 @@ class Sub {
     animateIn(req, done) {
 
         classes.add(config.body, `is-${this.slug}`)
-
+        
         this.el.style.display = 'block'
 
         const tl = new TimelineMax({ paused: true })

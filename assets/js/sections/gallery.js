@@ -17,9 +17,9 @@ class Gallery extends Default {
         super.init(req, done, { sub: req.params.id ? true : false })
     }
     
-    dataAdded(done) {
+    ready(done) {
 
-        super.dataAdded()
+        super.ready()
         
         done()
     }

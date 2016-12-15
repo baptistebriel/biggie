@@ -1,13 +1,19 @@
 {
   "name": "biggie",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "minimalist javascript frontend framework with bigwheel",
   "main": "gulpfile.js",
   "browser": {
     "framework": "./assets/js/framework",
     "config": "./assets/js/config",
+    "cache": "./assets/js/cache",
     "utils": "./assets/js/utils",
-    "cache": "./assets/js/cache"
+    "@utils/array": "./assets/js/utils/array",
+    "@utils/biggie": "./assets/js/utils/biggie",
+    "@utils/css": "./assets/js/utils/css",
+    "@utils/dom": "./assets/js/utils/dom",
+    "@utils/func": "./assets/js/utils/func",
+    "@utils/math": "./assets/js/utils/math"
   },
   "dependencies": {
     "bigwheel": "3.0.0",
@@ -20,6 +26,7 @@
     "dom-select": "^1.0.0",
     "gsap": "^1.19.0",
     "please-ajax": "^2.0.2",
+    "prefix": "^1.0.0",
     "query-dom-components": "^0.1.0",
     "sniffer": "github:watsondg/sniffer"
   },
@@ -49,6 +56,14 @@
     "vinyl-transform": "^1.0.0",
     "watchify": "^3.6.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baptistebriel/biggie.git"
+  },
+  "bugs": {
+    "url": "https://github.com/baptistebriel/biggie/issues",
+    "email": "baptiste@sa-studio.fr"
+  },
   "browserify": {
     "transform": [
       [
@@ -65,6 +80,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Jam3",
+  "author": "Baptiste Briel",
   "license": "ISC"
 }

@@ -1,11 +1,11 @@
-# biggie
-Biggie is a JavaScript application boilerplate written in ES6 based on [bigwheel](https://github.com/bigwheel-framework), a minimalist framework from [Jam3](http://www.jam3.com/).  
+biggie is a JavaScript application boilerplate written in ES6 based on [bigwheel](https://github.com/bigwheel-framework), a minimalist framework from [Jam3](http://www.jam3.com/).  
 
 > :exclamation: Be sure to check out the full [documentation](https://github.com/bigwheel-framework/documentation) for bigwheel before you're getting started.
 
 ## Getting Started
 
 ```sh
+# clone repo to local
 git clone https://github.com/baptistebriel/biggie.git
 
 # move into directory
@@ -36,9 +36,9 @@ Your site will be at `http://localhost:3000` by default using [browser-sync](htt
 
 ### Loading your data
 
-> `/assets/js/utils.js`
+> `/assets/js/utils/biggie/page.js`
 
-- `loadPage(req, view, options, done)`
+- `page(req, view, options, done)`
 
 This function is called on `init`, for all sections that extends default.js
 - 1) retrieve the slug of the current route, from the `req` parameter 
@@ -50,14 +50,14 @@ This function is called on `init`, for all sections that extends default.js
 With the default setup, it's loading static `.html` files under the `/templates` folder as such:  
 i.e. with a route as `http://localhost:3000/home`, it will load `/templates/home.html`
 
-> `assets/js/utils.js`
+> `/assets/js/utils/biggie/page.js`
 
 ```js
-ajax.get(`${config.BASE}templates/${slug}.html`, {
+ajax.get(`${config.BASE}templates/${id}.html`, {
   success: (object) => {
     const html = object.data
     page.innerHTML = html
-    if(options.cache) cache[slug] = html
+    if(options.cache) cache[id] = html
     done()
   }
 })
@@ -71,41 +71,34 @@ Default for `config.BASE` is `/`, but if your website is under `website.com/bigg
 
 #### WordPress
 
-If you're using WordPress for example, the `loadPage` function would look like this:
+If you're using WordPress for example, the `page` function would look like this:
 
-> `assets/js/utils.js`
+> `/assets/js/utils/biggie/page.js`
 
 ```js
-const slug = utils.biggie.getSlug(req, options)
-const cn = slug.replace('/', '-')
-const page = req.previous ? create({ selector: 'div', id: `page-${cn}`, styles: `page page-${cn}` }) : config.$body.querySelector('.page')
+const id = slug(req, options)
+const cn = id.replace('/', '-')
+const page = create({ selector: 'div', id: `page-${cn}`, styles: `page page-${cn}` })
 
-if(req.previous) {
+view.appendChild(page)
 
-  view.appendChild(page)
-
-  if(!cache[slug] || !options.cache) {
-
-    ajax.get(`${config.BASE}${slug}`, {
-      success: (object) => {
-        const html = object.data.split(/(<body>|<\/body>)/ig)[2]
-        page.innerHTML = html
-        if(options.cache) cache[slug] = html
-        done()
-      }
-    })
-            
-  } else {
-      	
-    setTimeout(() => {
-      page.innerHTML = cache[slug]
-      done()
-    }, 1)
-  }
+if(!cache[slug] || !options.cache) {
   
+  ajax.get(`${config.BASE}${slug}`, {
+    success: (object) => {
+      const html = object.data.split(/(<main>|<\/main>)/ig)[2]
+      page.innerHTML = html
+      if(options.cache) cache[slug] = html
+      done()
+    }
+  })
+          
 } else {
-
-  setTimeout(done, 1)
+    	
+  setTimeout(() => {
+    page.innerHTML = cache[slug]
+    done()
+  }, 1)
 }
 
 return page
@@ -146,14 +139,14 @@ init(req, done) {
 }
 ```
 
-> `assets/js/utils.js`
+> `/assets/js/utils/biggie/page.js`
 
 ```js
-ajax.get(`${config.BASE}templates/${slug}.mst`, {
+ajax.get(`${config.BASE}templates/${id}.mst`, {
   success: (object) => {
     const rendered = Mustache.render(object.data, window._data)
     page.innerHTML = rendered
-    if(options.cache) cache[slug] = rendered
+    if(options.cache) cache[id] = rendered
     done()
   }
 })
@@ -182,7 +175,6 @@ This is an example of a section, extending Default:
 
 ```js
 import config from 'config'
-import utils from 'utils'
 import event from 'dom-event'
 import Default from './default'
 
@@ -236,7 +228,7 @@ class Section extends Default {
 
     // 'req' contains the previous route
     
-    classes.add(config.$body, `is-${this.slug}`)
+    classes.add(config.body, `is-${this.slug}`)
 
     TweenLite.to(this.page, 1, {
       y: 0, 
@@ -250,7 +242,7 @@ class Section extends Default {
     
     // 'req' contains the next route
     
-    classes.remove(config.$body, `is-${this.slug}`)
+    classes.remove(config.body, `is-${this.slug}`)
     
     TweenLite.to(this.page, 0.7, {
       y: 100,
@@ -280,28 +272,17 @@ module.exports = Section
 
 ### Utils
 
-> CSS
-
-- `getRect(top, right, bottom, left)`
-
-Returns the CSS rect string with clip values.
-
-```js
-const rect = utils.css.getRect(0, 300, 10, 0)
-div.style.clip = rect
-```
-
-> JS
-
-#### array
+> assets/js/utils/array
 
 - `from(opt)`
 
 Returns a new Array from an argument. (usually a `NodeList`)
 
 ```js
+import array from '@utils/array'
+
 const els = document.querySelectorAll('.el')
-const arr = utils.js.array.from(els)
+const arr = array.from(els)
 
 // arr.forEach(...)
 ```
@@ -311,7 +292,8 @@ const arr = utils.js.array.from(els)
 Combine multiple arrays into one array.
 
 ```js
-const combine = utils.js.array.combine(["foo"], ["bar", "baz"], [1, 2])
+import array from '@utils/array'
+const combine = array.combine(["foo"], ["bar", "baz"], [1, 2])
 
 // ["foo", "bar", "baz", 1, 2]
 ```
@@ -321,7 +303,8 @@ const combine = utils.js.array.combine(["foo"], ["bar", "baz"], [1, 2])
 Returns a copy of the array with all instances of the values removed.
 
 ```js
-const without = utils.js.array.without([1, 2, 1, 0, 3, 1, 4], 0, 1)
+import array from '@utils/array'
+const without = array.without([1, 2, 1, 0, 3, 1, 4], 0, 1)
 
 // [2, 3, 4]
 ```
@@ -331,7 +314,8 @@ const without = utils.js.array.without([1, 2, 1, 0, 3, 1, 4], 0, 1)
 Returns the minimum value in the array.
 
 ```js
-const min = utils.js.array.min([10, 50, 30])
+import array from '@utils/array'
+const min = array.min([10, 50, 30])
 
 // 10
 ```
@@ -341,55 +325,60 @@ const min = utils.js.array.min([10, 50, 30])
 Returns the maximum value in the array.
 
 ```js
-const max = utils.js.array.max([10, 50, 30])
+import array from '@utils/array'
+const max = array.max([10, 50, 30])
 
 // 50
 ```
 
-#### math
+> assets/js/utils/biggie
 
-- `clamp(min, value, max)`
+- `bind`
 
-Returns a clamped value between min and max values.
-
-```js
-const min = 0
-const max = 200
-const value = e.deltaY
-const clamped = utils.js.math.clamp(0, value, 200)
-```
-
-#### func
-
-- `once(fn)`
-
-Returns a new function that won't execute more than once.
+Object with add/remove methods to bind/unbind HTML element with an eventListener.  
+On click, it will call `framework.go` (from bigwheel) and will use the `href` of the element to resolve a new route -- exept if the element has the css class `no-route` or a `target="_blank" attribute`.
 
 ```js
-const yo = () => console.log('Yo')
-const sayYo = utils.js.func.once(yo)
-sayYo(); // 'Yo'
-sayYo(); // Doesn't execute
+import biggie from '@utils/biggie'
+
+const a = document.querySelectorAll('nav a')
+biggie.bind.add(a)
+// biggie.bind.remove(a)
 ```
 
-- `interval(callback, options)`
+> assets/js/utils/css
 
-Better setInterval using requestAnimationFrame.
+- `prefixes`
+
+Object containing vendor prefixes for CSS attributes.
 
 ```js
-const options = { delay: 500, duration: 1500 }
-utils.js.func.interval(() => console.log('tick!'), options) // will run 3 times
+import css from '@utils/css'
+div.style[css.prefixes.transform] = `translate3d(0,0,0)`
 ```
 
-#### dom
+- `rect(top, right, bottom, left)`
+
+Returns the CSS rect string with clip values.
+
+```js
+import css from '@utils/css'
+
+const rect = css.rect(0, 300, 10, 0)
+div.style.clip = rect
+```
+
+> assets/js/utils/dom
 
 - `each`
 
 Iterate over a NodeList.
 
 ```js
+import dom from '@utils/dom'
+
 const divs = document.querySelectorAll('div')
-utils.js.dom.each(divs, (e) => {
+dom.each(divs, (e) => {
   console.log(e.index, e.el)
 })
 
@@ -404,12 +393,55 @@ Array.from(divs).forEach(callback)
 for (var div of divs) callback(div)
 ```
 
-- `scrollTop`
+- `scroll(opts)`
 
 Returns either `pageYOffset` or `document.documentElement||document.body.scrollTop`, based on your browser.
 
 ```js
-const scrollY = utils.js.dom.scrollTop()
+import dom from '@utils/dom'
+const scrollY = dom.scroll('y')
+```
+
+> assets/js/utils/func
+
+- `once(fn)`
+
+Returns a new function that won't execute more than once.
+
+```js
+import func from '@utils/func'
+
+const yo = () => console.log('Yo')
+const sayYo = func.once(yo)
+
+sayYo(); // 'Yo'
+sayYo(); // Doesn't execute
+```
+
+- `interval(callback, options)`
+
+Better setInterval using requestAnimationFrame.
+
+```js
+import func from '@utils/func'
+
+const options = { delay: 500, duration: 1500 }
+func.interval(() => console.log('tick!'), options) // will run 3 times
+```
+
+> assets/js/utils/math
+
+- `clamp(min, value, max)`
+
+Returns a clamped value between min and max values.
+
+```js
+import math from '@utils/math'
+
+const min = 0
+const max = 200
+const value = e.deltaY
+const clamped = math.clamp(0, value, 200)
 ```
 
 ### Gulp

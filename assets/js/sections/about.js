@@ -17,9 +17,9 @@ class About extends Default {
 		super.init(req, done)
 	}
 	
-	dataAdded(done) {
-
-		super.dataAdded()
+	ready(done) {
+		
+		super.ready()
 
 		done()
 	}
@@ -34,7 +34,7 @@ class About extends Default {
 			onComplete: done
 		})
 	}
-
+	
 	animateOut(req, done) {
 
 		classes.remove(config.body, `is-${this.slug}`)

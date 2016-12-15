@@ -1,3 +1,3 @@
-import framework from 'framework'
+import App from './app'
 
-framework.init()
+const app = new App()
