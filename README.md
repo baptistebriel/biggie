@@ -198,14 +198,14 @@ class Section extends Default {
     super.init(req, done)
   }
   
-  dataAdded(done) {
+  ready(done) {
 
-    super.dataAdded()
+    super.ready()
 
     // now that the dom of your page is ready, you can now add event listeners, initialise components, etc.
     // this.addEvents()
     
-    // always call done() at the end of dataAdded
+    // always call done() at the end of ready
     done()
   }
 
