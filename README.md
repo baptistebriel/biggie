@@ -274,15 +274,15 @@ module.exports = Section
 
 > assets/js/utils/array
 
-- `from(opt)`
+- `slice(opt)`
 
 Returns a new Array from an argument. (usually a `NodeList`)
 
 ```js
-import array from '@utils/array'
+import slice from '@utils/slice'
 
 const els = document.querySelectorAll('.el')
-const arr = array.from(els)
+const arr = array.slice(els)
 
 // arr.forEach(...)
 ```
