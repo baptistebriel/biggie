@@ -279,7 +279,7 @@ module.exports = Section
 Returns a new Array from an argument. (usually a `NodeList`)
 
 ```js
-import slice from '@utils/slice'
+import array from '@utils/array'
 
 const els = document.querySelectorAll('.el')
 const arr = array.slice(els)
