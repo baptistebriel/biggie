@@ -1,4 +1,4 @@
-#### :exclamation: This project is no longer maintainer. I would not suggest starting a new project with it.
+#### :exclamation: :exclamation: :exclamation: This project is no longer maintained. I would not suggest starting a new project with it.
 
 biggie is a JavaScript application boilerplate written in ES6 based on [bigwheel](https://github.com/bigwheel-framework), a minimalist framework from [Jam3](http://www.jam3.com/).  
 
